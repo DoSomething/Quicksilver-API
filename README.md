@@ -1,10 +1,39 @@
 # Quicksilver-API
 API gateway to Quicksilver (Message Broker) functionality.
 
-### Overview
-| Producers                                                   | Exchange                      | Queue                                  | Consumers                                                                        | Description                                             |
-| ----------------------------------------------------------: |:-----------------------------:|:--------------------------------------:| :------------------------------------------------------------------------------: | :-----------------------------------------------------: |
-| Phoenix                                                     | transactionalExchange (topic) | transactionalQueue (*.*.transactional) | [mbc-transactional-email](https://github.com/DoSomething/mbc-transactional-email)| Transactional email messages sent through Mandrill API. |
-| -> user password reset (user.password_reset.transactional)  |                               |                                        |                                                                                  |                                                         |
-| -> campaign signup (campaign.signup.transactional)          |                               |                                        |                                                                                  |                                                         |
-| -> campaign reportback (campaign.report_back.transactional) |                               |                                        |                                                                                  |                                                         |
+## Exchanges
+### transactionalQueue
+
+---
+
+<dl>
+  <dt>Type</dt>
+  <dd><code>topic</code></dd>
+
+  <dt>Description</dt>
+  <dd>Transactional email messages sent through Mandrill API.</dd>
+</dl>
+
+#### Queues
+##### `transactionalQueue`
+<dl>
+  <dt>Routing key</dt>
+  <dd><code>*.*.transactional</code></dd>
+
+  <dt>Consumer: transactional email</dt>
+  <dd>[mbc-transactional-email](https://github.com/DoSomething/mbc-transactional-email)</dd>
+</dl>
+
+
+#### Producers
+##### Phoenix
+<dl>
+  <dt>user password reset</dt>
+  <dd><code>user.password_reset.transactional</code></dd>
+
+  <dt>campaign signup</dt>
+  <dd><code>campaign.signup.transactional</code></dd>
+
+  <dt>campaign reportback</dt>
+  <dd><code>campaign.report_back.transactional</code></dd>
+</dl>
