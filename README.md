@@ -1,27 +1,11 @@
 # Quicksilver-API
 API gateway to Quicksilver (Message Broker) functionality.
 
-### Quicksilver queues
-| Name                            | Consumers     | Producers  | Description |
-| ------------------------------- |:-------------:|:----------:| ----------- |
-| `activityStatsQueue`            |               |            |             |
-| `aliveness-test`                |               |            |             |
-| `deadLetterQueue`               |               |            |             |
-| `digestCampaignsQueue`          |               |            |             |
-| `digestProducerQueue`           |               |            |             |
-| `digestUnsubscribeQueue`        |               |            |             |
-| `digestUserQueue`               |               |            |             |
-| `externalApplicationEventQueue` |               |            |             |
-| `externalApplicationUserQueue`  |               |            |             |
-| `imageProcessingQueue`          |               |            |             |
-| `loggingGatewayQueue`           |               |            |             |
-| `loggingQueue`                  |               |            |             |
-| `mailchimpCampaignSignupQueue`  |               |            |             |
-| `mailchimpUnsubscribeQueue`     |               |            |             |
-| `mobileCommonsQueue`            |               |            |             |
-| `transactionalQueue`            |               |            |             |
-| `userAPICampaignActivityQueue`  |               |            |             |
-| `userAPIRegistrationQueue`      |               |            |             |
-| `userImportQueue`               |               |            |             |
-| `userMailchimpStatusQueue`      |               |            |             |
-| `userRegistrationQueue`         |               |            |             |
+### Overview
+| Producers                                                   | Exchange                      | Queue                                  | Consumers                                              | Description                                             |
+| ----------------------------------------------------------: |:-----------------------------:|:--------------------------------------:| :----------------------------------------------------: | :-----------------------------------------------------: |
+| Phoenix                                                     | transactionalExchange (topic) | transactionalQueue (*.*.transactional) | mbc-transactional-email                                |                                                         |
+| -> user registration (user.registration.transactional)      |                               |                                        | https://github.com/DoSomething/mbc-transactional-email | Transactional email messages sent through Mandrill API. |
+| -> user password reset (user.password_reset.transactional)  |                               |                                        |                                                        |                                                         |
+| -> campaign signup (campaign.signup.transactional)          |                               |                                        |                                                        |                                                         |
+| -> campaign reportback (campaign.report_back.transactional) |                               |                                        |                                                        |                                                         |
