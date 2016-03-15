@@ -21,7 +21,7 @@ API gateway to Quicksilver (Message Broker) functionality.
   <dd><code>*.*.transactional</code></dd>
 
   <dt>Consumer: transactional email</dt>
-  <dd>[mbc-transactional-email](https://github.com/DoSomething/mbc-transactional-email)</dd>
+  <dd><a href="/DoSomething/mbc-transactional-email">mbc-transactional-email</a></dd>
 </dl>
 
 
