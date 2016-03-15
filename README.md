@@ -2,7 +2,7 @@
 API gateway to Quicksilver (Message Broker) functionality.
 
 ## Exchanges
-### transactionalQueue
+### transactionalExchange
 
 ---
 
