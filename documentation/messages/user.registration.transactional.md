@@ -2,10 +2,22 @@
 
 User registration event.
 
-**Routing key:**
+**Routing key**
+
 `user.registration.transactional`
 
-**Parameters:**
+**Exchanges**
+- `transactionalExchange`
+
+**Queueus**
+- `activityStatsQueue`
+- `loggingQueue`
+- `mobileCommonsQueue`
+- `transactionalQueue`
+- `userAPIRegistrationQueue`
+- `userRegistrationQueue`
+
+**Parameters**
 
 ```js
 {
@@ -43,7 +55,7 @@ User registration event.
   /* Required. Example: `US`. */
   application_id: String,
 
-  /* Required. An array of tags to  */
+  /* Required. an array of string to tag the message with. Example: `drupal_user_register`. */
   email_tags: Array,
 
   /* Required. An array of variables to inject into Mandrill template. */
