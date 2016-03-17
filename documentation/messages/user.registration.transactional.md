@@ -31,7 +31,7 @@ User registration event.
   /* Required. */
   email: String,
 
-  /* Required. */
+  /* Required. Phoenix user id. */
   uid: Number,
 
   /* Required, Example: `US`. */
@@ -79,8 +79,8 @@ User registration event.
 ```js
 {
 
-  /* Required. */
-  uid: Number,
+  /* Required. Northstar user ID. Example: '555b9225bffebc31068b4567'. */
+  uid: String,
 
   /* Required. */
   email: String,
@@ -122,3 +122,4 @@ Changes:
 - :heavy_exclamation_mark: `user_country` renamed to `country`
 - :heavy_exclamation_mark: `user_language` renamed to `language`
 - :heavy_exclamation_mark: `birthdate` format changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601)
+- :heavy_exclamation_mark: `uid` Phoenix user id is replaced with [Northstar](https://github.com/DoSomething/northstar/blob/dev/documentation/endpoints/users.md) user id.
