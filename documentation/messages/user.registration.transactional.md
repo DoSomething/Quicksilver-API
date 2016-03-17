@@ -9,13 +9,13 @@ User registration event.
 **Exchanges**
 - `transactionalExchange`
 
-**Queues**
-- `activityStatsQueue`
-- `loggingQueue`
-- `mobileCommonsQueue`
-- `transactionalQueue`
-- `userAPIRegistrationQueue`
-- `userRegistrationQueue`
+**Queues and binding keys**
+- `activityStatsQueue`: `*.*.transactional`
+- `loggingQueue`: `*.*.transactional`
+- `mobileCommonsQueue`: `campaign.signup.*`
+- `transactionalQueue`: `*.*.transactional`
+- `userAPIRegistrationQueue`: `user.registration.#`
+- `userRegistrationQueue`: `user.registration.*`
 
 **Parameters**
 
@@ -108,8 +108,8 @@ User registration event.
 
 Changes:
 
-- :x: `activity`: it always will be set to `user_register` for this type of messages
-- :x: `MEMBER_COUNT` can be retrieved from Phienix: see [API](https://github.com/DoSomething/phoenix/wiki/API#get-member-count)
+- :x: `activity`: `it will always be set to `user_register` for this message type`
+- :x: `MEMBER_COUNT` can be retrieved from Phoenix: see [API](https://github.com/DoSomething/phoenix/wiki/API#get-member-count)
 - :x: `activity_timestamp` can be set in Quicksilver API
 - :x: `mailchimp_list_id` should be determined in this API
 - :heavy_exclamation_mark: `email_tag` is replaced with optional `registration_source`
@@ -118,4 +118,4 @@ Changes:
 - :heavy_exclamation_mark: `email_template` should be determined from `user_country`
 - :heavy_exclamation_mark: `user_country` renamed to `country`
 - :heavy_exclamation_mark: `user_language` renamed to `language`
-- :heavy_exclamation_mark: `birthdate` format changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601).
+- :heavy_exclamation_mark: `birthdate` format changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601)
