@@ -111,7 +111,7 @@ User registration event.
 
 Changes:
 
-- :x: `activity`: `it will always be set to `user_register` for this message type`
+- :x: `activity`: it will always be set to `user_register` for this message type
 - :x: `MEMBER_COUNT` can be retrieved from Phoenix: see [API](https://github.com/DoSomething/phoenix/wiki/API#get-member-count)
 - :x: `activity_timestamp` can be set in Quicksilver API
 - :x: `mailchimp_list_id` should be determined in this API
