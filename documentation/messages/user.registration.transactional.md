@@ -49,7 +49,7 @@ User registration event.
   /* Required. Unix timestamp. Example: `881884800`. */
   birthdate: Number,
 
-  /* Required. Example: `1`. */
+  /* Required. Always `1` as the transaction always results in the email address being subscribed. */
   subscribed: Boolean,
 
   /* Required. Unix timestamp. Example: `1458067430`. */
@@ -97,9 +97,6 @@ User registration event.
   /* Required. ISO-8601 formatted date. Example: `2016-03-16`. */
   birthdate: String,
 
-  /* Required. Example: `1`, `false`. */
-  subscribed: Boolean,
-
   /* Optional. A string to tag the message with. Example: `drupal_user_register`. */
   registration_source: String,
 
@@ -115,6 +112,7 @@ Changes:
 - :x: `MEMBER_COUNT` can be retrieved from Phoenix: see [API](https://github.com/DoSomething/phoenix/wiki/API#get-member-count)
 - :x: `activity_timestamp` can be set in Quicksilver API
 - :x: `mailchimp_list_id` should be determined in this API
+- :x: `subscribed` removed, as it always `1`
 - :heavy_exclamation_mark: `email_tag` is replaced with optional `registration_source`
 - :heavy_exclamation_mark: `application_id` optional, defaults to US
 - :heavy_exclamation_mark: `fname` replaced with `first_name` and moved to the top level
