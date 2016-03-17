@@ -40,7 +40,7 @@ User registration event.
   /* Required, Example: `en`. */
   user_language: String,
 
-  /* Required. Example: `mb-user-register-US`. */
+  /* Optional. Default is generated base on `user_country` field. Example: `mb-user-register-US`. */
   email_template: String,
 
   /* Required. Example: `f2fab1dfd4`. */
