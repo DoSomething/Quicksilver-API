@@ -9,7 +9,7 @@ User registration event.
 **Exchanges**
 - `transactionalExchange`
 
-**Queueus**
+**Queues**
 - `activityStatsQueue`
 - `loggingQueue`
 - `mobileCommonsQueue`
@@ -118,4 +118,4 @@ Changes:
 - :heavy_exclamation_mark: `email_template` should be determined from `user_country`
 - :heavy_exclamation_mark: `user_country` renamed to `country`
 - :heavy_exclamation_mark: `user_language` renamed to `language`
-- :heavy_exclamation_mark: `birthdate` format changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601.
+- :heavy_exclamation_mark: `birthdate` format changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601).
