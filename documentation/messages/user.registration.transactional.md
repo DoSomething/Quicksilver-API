@@ -10,12 +10,15 @@ User registration event.
 - `transactionalExchange`
 
 **Queues and binding keys**
-- `activityStatsQueue`: `*.*.transactional`
-- `loggingQueue`: `*.*.transactional`
-- `mobileCommonsQueue`: `campaign.signup.*`
-- `transactionalQueue`: `*.*.transactional`
-- `userAPIRegistrationQueue`: `user.registration.#`
-- `userRegistrationQueue`: `user.registration.*`
+
+| Queue                      | Binding key           |
+| -------------------------- | --------------------- |
+| `activityStatsQueue`       | `*.*.transactional`   |
+| `loggingQueue`             | `*.*.transactional`   |
+| `mobileCommonsQueue`       | `campaign.signup.*`   |
+| `transactionalQueue`       | `*.*.transactional`   |
+| `userAPIRegistrationQueue` | `user.registration.#` |
+| `userRegistrationQueue`    | `user.registration.*` |
 
 **Parameters**
 
