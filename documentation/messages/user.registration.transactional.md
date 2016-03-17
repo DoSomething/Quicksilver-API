@@ -91,8 +91,8 @@ User registration event.
   /* Required, Example: `en`. */
   language: String,
 
-  /* Required. Unix timestamp. Example: `881884800`. */
-  birthdate: Number,
+  /* Required. ISO-8601 formatted date. Example: `2016-03-16`. */
+  birthdate: String,
 
   /* Required. Example: `1`, `false`. */
   subscribed: Boolean,
@@ -118,3 +118,4 @@ Changes:
 - __CHANGED__ `email_template` should be determined from `user_country`
 - __CHANGED__ `user_country` renamed to `country`
 - __CHANGED__ `user_language` renamed to `language`
+- __CHANGED__ `birthdate` format changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601.
