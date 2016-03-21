@@ -2,6 +2,9 @@
 
 User registration event.
 
+#### Current Configuration
+Accessed by connecting to RabbitMQ server and sending message in the following format.
+
 **Routing key**
 
 `user.registration.transactional`
@@ -20,7 +23,7 @@ User registration event.
 | `userAPIRegistrationQueue` | `user.registration.#` |
 | `userRegistrationQueue`    | `user.registration.*` |
 
-**Parameters**
+#### Current Parameters
 
 ```js
 {
@@ -67,6 +70,7 @@ User registration event.
 
 }
 ```
+----
 
 #### Suggested API
 
@@ -85,28 +89,31 @@ User registration event.
   /* Required: user_id or email. */
   email: String,
 
-  /* Optional. A string to tag the message with. Example: `drupal_user_register`. */
+  /* Optional. A string to tag the message with that can be referenced in Mandrill. Example: `drupal_user_register`. */
   registration_source: String,
 
-  /* Optional. Used to determined a site in multisite environment. Default: `US`. */
+  /* Optional. Used to determine the origin of the request as a site in multisite environment. Default: `US`. */
   application_id: String,
+
+  /* Optional. The default is generated base on `user_country` value gathered from user settings found for `email` or `user_id`. Example: `mb-user-register-US`. Defining this value allows for specification of an alternative template. */
+  email_template: String,
 
 }
 ```
 
 Changes:
 
-- :x: `activity`: it will always be set to `user_register` for this message type
-- :x: `MEMBER_COUNT` can be retrieved from Phoenix: see [API](https://github.com/DoSomething/phoenix/wiki/API#get-member-count)
-- :x: `activity_timestamp` can be set in Quicksilver API
-- :x: `mailchimp_list_id` should be determined in this API
-- :x: `subscribed` removed, as it always `1`
-- :x: `fname` to be looked up on Northstar
-- :x: `user_language` to be looked up on Northstar
-- :x: `user_language` to be looked up on Northstar
-- :x: `birthdate` to be looked up on Northstar
+- :x: `activity`: always `user_register` for this message type
+- :x: `merge_var: MEMBER_COUNT` retrieved from Phoenix: see [API](https://github.com/DoSomething/phoenix/wiki/API#get-member-count)
+- :x: `activity_timestamp` set in Quicksilver API
+- :x: `mailchimp_list_id` determined in API
+- :x: `subscribed` removed, always `1` as transaction request enables user email subscription preference.
+- :x: `fname` value from Northstar
+- :x: `merge_var: FNAME` value from Northstar
+- :x: `user_language` value from Northstar
+- :x: `birthdate` value from Northstar
 - :heavy_exclamation_mark: `email_tag` is replaced with optional `registration_source`
 - :heavy_exclamation_mark: `application_id` optional, defaults to US
-- :heavy_exclamation_mark: `email_template` should be determined from `user_country`
+- :heavy_exclamation_mark: `email_template` should be determined from `user_country` but can be defined to use specific template.
 - :heavy_exclamation_mark: `birthdate` format changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601)
 - :heavy_exclamation_mark: `user_id` Phoenix user id is replaced with [Northstar](https://github.com/DoSomething/northstar/blob/dev/documentation/endpoints/users.md#retrieve-a-user) user id.
