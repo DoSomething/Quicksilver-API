@@ -79,10 +79,10 @@ User registration event.
 ```js
 {
 
-  /* Required: uid or email. Northstar user ID. Example: '555b9225bffebc31068b4567'. */
-  uid: String,
+  /* Required: user_id or email. Northstar user ID. Example: '555b9225bffebc31068b4567'. */
+  user_id: String,
 
-  /* Required: uid or email. */
+  /* Required: user_id or email. */
   email: String,
 
   /* Optional. A string to tag the message with. Example: `drupal_user_register`. */
@@ -109,4 +109,4 @@ Changes:
 - :heavy_exclamation_mark: `application_id` optional, defaults to US
 - :heavy_exclamation_mark: `email_template` should be determined from `user_country`
 - :heavy_exclamation_mark: `birthdate` format changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601)
-- :heavy_exclamation_mark: `uid` Phoenix user id is replaced with [Northstar](https://github.com/DoSomething/northstar/blob/dev/documentation/endpoints/users.md#retrieve-a-user) user id.
+- :heavy_exclamation_mark: `user_id` Phoenix user id is replaced with [Northstar](https://github.com/DoSomething/northstar/blob/dev/documentation/endpoints/users.md#retrieve-a-user) user id.
