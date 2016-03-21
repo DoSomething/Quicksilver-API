@@ -85,18 +85,6 @@ User registration event.
   /* Required. */
   email: String,
 
-  /* Required. First name. */
-  first_name: String,
-
-  /* Required, Example: `US`. */
-  user_country: String,
-
-  /* Required, Example: `en`. */
-  user_language: String,
-
-  /* Required. ISO-8601 formatted date. Example: `2016-03-16`. */
-  birthdate: String,
-
   /* Optional. A string to tag the message with. Example: `drupal_user_register`. */
   registration_source: String,
 
@@ -113,9 +101,12 @@ Changes:
 - :x: `activity_timestamp` can be set in Quicksilver API
 - :x: `mailchimp_list_id` should be determined in this API
 - :x: `subscribed` removed, as it always `1`
+- :x: `fname` to be looked up on Northstar
+- :x: `user_language` to be looked up on Northstar
+- :x: `user_language` to be looked up on Northstar
+- :x: `birthdate` to be looked up on Northstar
 - :heavy_exclamation_mark: `email_tag` is replaced with optional `registration_source`
 - :heavy_exclamation_mark: `application_id` optional, defaults to US
-- :heavy_exclamation_mark: `fname` replaced with `first_name` and moved to the top level
 - :heavy_exclamation_mark: `email_template` should be determined from `user_country`
 - :heavy_exclamation_mark: `birthdate` format changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601)
-- :heavy_exclamation_mark: `uid` Phoenix user id is replaced with [Northstar](https://github.com/DoSomething/northstar/blob/dev/documentation/endpoints/users.md) user id.
+- :heavy_exclamation_mark: `uid` Phoenix user id is replaced with [Northstar](https://github.com/DoSomething/northstar/blob/dev/documentation/endpoints/users.md#retrieve-a-user) user id.
