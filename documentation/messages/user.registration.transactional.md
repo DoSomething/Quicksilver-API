@@ -15,7 +15,7 @@ User registration event.
 | -------------------------- | --------------------- |
 | `activityStatsQueue`       | `*.*.transactional`   |
 | `loggingQueue`             | `*.*.transactional`   |
-| `mobileCommonsQueue`       | `campaign.signup.*`   |
+| `mobileCommonsQueue`       | `user.registration.*` |
 | `transactionalQueue`       | `*.*.transactional`   |
 | `userAPIRegistrationQueue` | `user.registration.#` |
 | `userRegistrationQueue`    | `user.registration.*` |
