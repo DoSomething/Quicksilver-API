@@ -79,10 +79,10 @@ User registration event.
 ```js
 {
 
-  /* Required. Northstar user ID. Example: '555b9225bffebc31068b4567'. */
+  /* Required: uid or email. Northstar user ID. Example: '555b9225bffebc31068b4567'. */
   uid: String,
 
-  /* Required. */
+  /* Required: uid or email. */
   email: String,
 
   /* Optional. A string to tag the message with. Example: `drupal_user_register`. */
