@@ -89,10 +89,10 @@ User registration event.
   first_name: String,
 
   /* Required, Example: `US`. */
-  country: String,
+  user_country: String,
 
   /* Required, Example: `en`. */
-  language: String,
+  user_language: String,
 
   /* Required. ISO-8601 formatted date. Example: `2016-03-16`. */
   birthdate: String,
@@ -117,7 +117,5 @@ Changes:
 - :heavy_exclamation_mark: `application_id` optional, defaults to US
 - :heavy_exclamation_mark: `fname` replaced with `first_name` and moved to the top level
 - :heavy_exclamation_mark: `email_template` should be determined from `user_country`
-- :heavy_exclamation_mark: `user_country` renamed to `country`
-- :heavy_exclamation_mark: `user_language` renamed to `language`
 - :heavy_exclamation_mark: `birthdate` format changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601)
 - :heavy_exclamation_mark: `uid` Phoenix user id is replaced with [Northstar](https://github.com/DoSomething/northstar/blob/dev/documentation/endpoints/users.md) user id.
