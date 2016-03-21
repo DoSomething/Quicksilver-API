@@ -16,14 +16,14 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
 
 **Queues and binding keys**
 
-| Queue                      | Binding key           | Consumer Application               |
-| -------------------------- | --------------------- | ---------------------------------- |
-| `activityStatsQueue`       | `*.*.transactional`   | [mbp-externalApplications-dashboard](https://github.com/DoSomething/mbp-externalApplications-dashboard) |
-| `loggingQueue`             | `*.*.transactional`   | [mbc-logging-gateway](https://github.com/DoSomething/Quicksilver-PHP/tree/master/mbc-logging-gateway)   |
-| `mobileCommonsQueue`       | `user.registration.*` | [mbc-registration-mobile](https://github.com/DoSomething/mbc-registration-mobile)                       |
-| `transactionalQueue`       | `*.*.transactional`   | [mbc-transactional-email](https://github.com/DoSomething/mbc-transactional-email)                       |
-| `userAPIRegistrationQueue` | `user.registration.#` | [mbc-userAPI-registration](https://github.com/DoSomething/mbc-userAPI-registration)                     |
-| `userRegistrationQueue`    | `user.registration.*` | [mbc-registration-email](https://github.com/DoSomething/mbc-registration-email)                         |
+| Queue                      | Binding key           | Consumer Application               | Description
+| -------------------------- | --------------------- | ---------------------------------- | --------------------------------------------------------------------- |
+| `activityStatsQueue`       | `*.*.transactional`   | [mbp-externalApplications-dashboard](https://github.com/DoSomething/mbp-externalApplications-dashboard) | Application in office lobby that displays user registration activity. |
+| `loggingQueue`             | `*.*.transactional`   | [mbc-logging-gateway](https://github.com/DoSomething/Quicksilver-PHP/tree/master/mbc-logging-gateway)   | Log tranaction to `mb-logging` database.                              |
+| `mobileCommonsQueue`       | `user.registration.*` | [mbc-registration-mobile](https://github.com/DoSomething/mbc-registration-mobile)                       | Send welcome SMS message.                                             |
+| `transactionalQueue`       | `*.*.transactional`   | [mbc-transactional-email](https://github.com/DoSomething/mbc-transactional-email)                       | Send welcome email message.                                           |
+| `userAPIRegistrationQueue` | `user.registration.#` | [mbc-userAPI-registration](https://github.com/DoSomething/mbc-userAPI-registration)                     | Create user document in `mb-users` database.                          |
+| `userRegistrationQueue`    | `user.registration.*` | [mbc-registration-email](https://github.com/DoSomething/mbc-registration-email)                         | Create MailChimp user account.                                        |
 
 #### Current Parameters
 
@@ -85,11 +85,14 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
 ```js
 {
 
-  /* Required: user_id or email. Northstar user ID. Example: '555b9225bffebc31068b4567'. */
+  /* Required: user_id or email or mobile. Northstar user ID. Example: '555b9225bffebc31068b4567'. */
   user_id: String,
 
-  /* Required: user_id or email. */
+  /* Required: user_id or email or mobile. */
   email: String,
+
+  /* Required: user_id or email or mobile. */
+  mobile: Integer,
 
   /* Optional. A string to tag the message with that can be referenced in Mandrill. Example: `drupal_user_register`. */
   registration_source: String,
