@@ -1,6 +1,8 @@
 # User registration transactional message
 
-User registration event.
+User registration event to trigger functionality within the Quicksilver system. Each queue bound to the exchange will have messages distributed to the consumer applicaiton based on the queue binding key.
+
+----
 
 #### Current Configuration
 Accessed by connecting to RabbitMQ server and sending message in the following format.
@@ -14,14 +16,14 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
 
 **Queues and binding keys**
 
-| Queue                      | Binding key           |
-| -------------------------- | --------------------- |
-| `activityStatsQueue`       | `*.*.transactional`   |
-| `loggingQueue`             | `*.*.transactional`   |
-| `mobileCommonsQueue`       | `user.registration.*` |
-| `transactionalQueue`       | `*.*.transactional`   |
-| `userAPIRegistrationQueue` | `user.registration.#` |
-| `userRegistrationQueue`    | `user.registration.*` |
+| Queue                      | Binding key           | Consumer Application               |
+| -------------------------- | --------------------- | ---------------------------------- |
+| `activityStatsQueue`       | `*.*.transactional`   | [mbp-externalApplications-dashboard](https://github.com/DoSomething/mbp-externalApplications-dashboard) |
+| `loggingQueue`             | `*.*.transactional`   | [mbc-logging-gateway](https://github.com/DoSomething/Quicksilver-PHP/tree/master/mbc-logging-gateway)   |
+| `mobileCommonsQueue`       | `user.registration.*` | [mbc-registration-mobile](https://github.com/DoSomething/mbc-registration-mobile)                       |
+| `transactionalQueue`       | `*.*.transactional`   | [mbc-transactional-email](https://github.com/DoSomething/mbc-transactional-email)                       |
+| `userAPIRegistrationQueue` | `user.registration.#` | [mbc-userAPI-registration](https://github.com/DoSomething/mbc-userAPI-registration)                     |
+| `userRegistrationQueue`    | `user.registration.*` | [mbc-registration-email](https://github.com/DoSomething/mbc-registration-email)                         |
 
 #### Current Parameters
 
