@@ -15,12 +15,15 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
 - `transactionalExchange`
 
 **Consumers**
-- [mbp-externalApplications-dashboard](../consumers/mbp-externalApplications-dashboard.md) @ `*.*.transactional`
-- [mbc-logging-gateway](../consumers/mbc-logging-gateway.md) @ `*.*.transactional`
-- [mbc-registration-mobile](../consumers/mbc-registration-mobile.md) @ `user.registration.*`
-- [mbc-transactional-email](../consumers/mbc-transactional-email.md) @ `*.*.transactional`
-- [mbc-userAPI-registration](../consumers/mbc-userAPI-registration.md) @ `user.registration.#`
-- [mbc-registration-email](../consumers/mbc-registration-email.md) @ `user.registration.*`
+
+| Consumer                                                                                 | Binding key           |
+| ---------------------------------------------------------------------------------------- | ----------------------|
+| [mbp-externalApplications-dashboard](../consumers/mbp-externalApplications-dashboard.md) |  `*.*.transactional`  |
+| [mbc-logging-gateway](../consumers/mbc-logging-gateway.md)                               |  `*.*.transactional`  |
+| [mbc-registration-mobile](../consumers/mbc-registration-mobile.md)                       |  `user.registration.*`|
+| [mbc-transactional-email](../consumers/mbc-transactional-email.md)                       |  `*.*.transactional`  |
+| [mbc-userAPI-registration](../consumers/mbc-userAPI-registration.md)                     |  `user.registration.#`|
+| [mbc-registration-email](../consumers/mbc-registration-email.md)                         |  `user.registration.*`|
 
 #### Current Parameters
 
