@@ -25,7 +25,7 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
 | [mbc-userAPI-registration](../consumers/mbc-userAPI-registration.md)                     |  `user.registration.#`|
 | [mbc-registration-email](../consumers/mbc-registration-email.md)                         |  `user.registration.*`|
 
-#### Current Parameters
+#### Current Message Payload
 
 ```js
 {
