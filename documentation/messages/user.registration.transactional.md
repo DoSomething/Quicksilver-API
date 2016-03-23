@@ -14,18 +14,18 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
 **Exchanges**
 - `transactionalExchange`
 
-**Queues and binding keys**
+**Consumers**
 
-| Queue                      | Binding key           | Consumer Application               | Description
-| -------------------------- | --------------------- | ---------------------------------- | --------------------------------------------------------------------- |
-| `activityStatsQueue`       | `*.*.transactional`   | [mbp-externalApplications-dashboard](https://github.com/DoSomething/mbp-externalApplications-dashboard) | Application in office lobby that displays user registration activity. |
-| `loggingQueue`             | `*.*.transactional`   | [mbc-logging-gateway](https://github.com/DoSomething/Quicksilver-PHP/tree/master/mbc-logging-gateway)   | Log tranaction to `mb-logging` database.                              |
-| `mobileCommonsQueue`       | `user.registration.*` | [mbc-registration-mobile](https://github.com/DoSomething/mbc-registration-mobile)                       | Send welcome SMS message.                                             |
-| `transactionalQueue`       | `*.*.transactional`   | [mbc-transactional-email](https://github.com/DoSomething/mbc-transactional-email)                       | Send welcome email message.                                           |
-| `userAPIRegistrationQueue` | `user.registration.#` | [mbc-userAPI-registration](https://github.com/DoSomething/mbc-userAPI-registration)                     | Create user document in `mb-users` database.                          |
-| `userRegistrationQueue`    | `user.registration.*` | [mbc-registration-email](https://github.com/DoSomething/mbc-registration-email)                         | Create MailChimp user account.                                        |
+| Consumer                                                                                 | Binding key           |
+| ---------------------------------------------------------------------------------------- | ----------------------|
+| [mbp-externalApplications-dashboard](../consumers/mbp-externalApplications-dashboard.md) |  `*.*.transactional`  |
+| [mbc-logging-gateway](../consumers/mbc-logging-gateway.md)                               |  `*.*.transactional`  |
+| [mbc-registration-mobile](../consumers/mbc-registration-mobile.md)                       |  `user.registration.*`|
+| [mbc-transactional-email](../consumers/mbc-transactional-email.md)                       |  `*.*.transactional`  |
+| [mbc-userAPI-registration](../consumers/mbc-userAPI-registration.md)                     |  `user.registration.#`|
+| [mbc-registration-email](../consumers/mbc-registration-email.md)                         |  `user.registration.*`|
 
-#### Current Parameters
+#### Current Message Payload
 
 ```js
 {
