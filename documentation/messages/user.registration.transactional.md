@@ -14,16 +14,16 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
 **Exchanges**
 - `transactionalExchange`
 
-**Consumers**
+**Queues**
 
-| Consumer                                                                                 | Binding key           |
-| ---------------------------------------------------------------------------------------- | ----------------------|
-| [mbp-externalApplications-dashboard](../consumers/mbp-externalApplications-dashboard.md) |  `*.*.transactional`  |
-| [mbc-logging-gateway](../consumers/mbc-logging-gateway.md)                               |  `*.*.transactional`  |
-| [mbc-registration-mobile](../consumers/mbc-registration-mobile.md)                       |  `user.registration.*`|
-| [mbc-transactional-email](../consumers/mbc-transactional-email.md)                       |  `*.*.transactional`  |
-| [mbc-userAPI-registration](../consumers/mbc-userAPI-registration.md)                     |  `user.registration.#`|
-| [mbc-registration-email](../consumers/mbc-registration-email.md)                         |  `user.registration.*`|
+| Name                                                              | Binding key           |
+| ----------------------------------------------------------------- | ----------------------|
+| [activityStatsQueue](../queues/activityStatsQueue.md)             |  `*.*.transactional`  |
+| [loggingQueue](../queues/loggingQueue.md)                         |  `*.*.transactional`  |
+| [mobileCommonsQueue](../queues/mobileCommonsQueue.md)             |  `user.registration.*`|
+| [transactionalQueue](../queues/transactionalQueue.md)             |  `*.*.transactional`  |
+| [userAPIRegistrationQueue](../queues/userAPIRegistrationQueue.md) |  `user.registration.#`|
+| [userRegistrationQueue](../queues/userRegistrationQueue.md)       |  `user.registration.*`|
 
 #### Current Message Payload
 
