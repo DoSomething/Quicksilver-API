@@ -69,6 +69,21 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
   /* Optional. Campaign langauge code. Example: "en". */
   campaign_language: String,
 
+  /* Optional. Override Mailchimp list id.  */
+  mailchimp_list_id: String,
+
+  /* Optional. Override Mailchimp Grouping id. */
+  mailchimp_grouping_id: Number,
+
+  /* Optional. Override Mailchimp Interest Group Name. */
+  mailchimp_group_name: String,
+
+  /* Optional. */
+  mobile: String,
+
+  /* Optional. Override Mobilecommons opt-in path. */
+  mc_opt_in_path_id: Number,
+
   /* Required. An array of variables to inject into Mandrill template. */
   /* Required keys: "MEMBER_COUNT", "FNAME", "CAMPAIGN_TITLE",  */
   /* "CAMPAIGN_LINK", "CALL_TO_ACTION", "STEP_ONE", "STEP_TWO", "STEP_THREE". */
@@ -97,7 +112,7 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
   email: String,
 
   /* Required: user_id or email or mobile. */
-  mobile: Integer,
+  mobile: String,
 
   /* Required. Phoenix campaign id. Example: "1334". */
   campaign_id: Number,
@@ -125,6 +140,10 @@ Changes:
 - :x: `merge_var: STEP_TWO` value from Phoenix
 - :x: `merge_var: STEP_THREE` value from Phoenix
 - :x: `merge_var: FNAME` value from Northstar
+- :x: `mailchimp_list_id` value from Phoenix
+- :x: `mailchimp_grouping_id` value from Phoenix
+- :x: `mailchimp_group_name` value from Phoenix
+- :x: `mc_opt_in_path_id` value from Phoenix
 - :x: `activity_timestamp` set in Quicksilver API
 - :x: `user_language` value from Northstar
 - :x: `user_country` value from Northstar
