@@ -1,7 +1,7 @@
 # activityStatsQueue
 
 ##### Purpose
-Display user registration activity in the office lobby.
+Transactional messages to be consumed to generate content for display in the office lobby.
 
 ##### Consumer
 Dasboard Consumer Application: [mbp-externalApplications-dashboard](https://github.com/DoSomething/mbp-externalApplications-dashboard)

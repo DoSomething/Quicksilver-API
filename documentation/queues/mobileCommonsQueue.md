@@ -1,7 +1,7 @@
 # mobileCommonsQueue
 
 ##### Purpose
-Send welcome SMS message.
+Messages for cunsumption to generate interaction with various SMS service providers.
 
 ##### Consumer
 Mobile registration consumer: [mbc-registration-mobile](https://github.com/DoSomething/mbc-registration-mobile).
