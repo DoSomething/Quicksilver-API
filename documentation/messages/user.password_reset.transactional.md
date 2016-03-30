@@ -14,13 +14,13 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
 **Exchanges**
 - `transactionalExchange`
 
-**Consumers**
+**Queues**
 
-| Consumer                                                                                 | Binding key           |
-| ---------------------------------------------------------------------------------------- | ----------------------|
-| [mbp-externalApplications-dashboard](../consumers/mbp-externalApplications-dashboard.md) |  `*.*.transactional`  |
-| [mbc-logging-gateway](../consumers/mbc-logging-gateway.md)                               |  `*.*.transactional`  |
-| [mbc-transactional-email](../consumers/mbc-transactional-email.md)                       |  `*.*.transactional`  |
+| Name                                                  | Binding key           |
+| ------------------------------------------------------| ----------------------|
+| [activityStatsQueue](../queues/activityStatsQueue.md) |  `*.*.transactional`  |
+| [loggingQueue](../queues/loggingQueue.md)             |  `*.*.transactional`  |
+| [transactionalQueue](../queues/transactionalQueue.md) |  `*.*.transactional`  |
 
 #### Current Message Payload
 
