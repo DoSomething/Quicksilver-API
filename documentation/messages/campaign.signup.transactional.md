@@ -100,7 +100,7 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
   mobile: Integer,
 
   /* Required. Phoenix campaign id. Example: "1334". */
-  campaing_id: Number,
+  campaign_id: Number,
 
   /* Required. A country of campaign user subscribed to. Example: "US". */
   campaign_country: String,
@@ -129,7 +129,7 @@ Changes:
 - :x: `user_language` value from Northstar
 - :x: `user_country` value from Northstar
 - :x: `subscribed` removed, always `1` as transaction request enables user email subscription preference.
-- :heavy_exclamation_mark: `event_id` renamed to `campaing_id`
+- :heavy_exclamation_mark: `event_id` renamed to `campaign_id`
 - :heavy_exclamation_mark: `email_tag` will be determined from `application_id`
 - :heavy_exclamation_mark: `application_id` new optional field to determine client app
 - :heavy_exclamation_mark: `email_template` should be determined from `user_country` but can be defined to use specific template.
