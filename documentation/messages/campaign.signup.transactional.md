@@ -117,8 +117,8 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
   /* Required. Phoenix campaign id. Example: "1334". */
   campaign_id: Number,
 
-  /* Required. A country of campaign user subscribed to. Example: "US". */
-  campaign_country: String,
+  /* Required. The language of the campaign the user subscribed to. Example: "en". */
+  campaign_language: String,
 
   /* Optional. The default is generated base on "user_country" value gathered */
   /* from user settings found for "email" or "user_id". */
