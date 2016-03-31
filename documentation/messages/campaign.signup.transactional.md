@@ -30,7 +30,7 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
 ```js
 {
 
-  /* Required. Always must be "campaign_signup". */
+  /* Required. Must be "campaign_signup" or "campaign_group_signup". */
   activity: String,
 
   /* Required. */
@@ -48,7 +48,10 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
   /* Required, Example: "en". */
   user_language: String,
 
-  /* Optional. Default is generated base on "user_country" field. Example: "mb-campaign-signup-US". */
+  /*
+    Optional. Default is generated base on "user_country" field.
+    Example: "mb-campaign-signup-US", "mb-campaign-group-signup-US"
+  */
   email_template: String,
 
   /* Required. Unix timestamp. Example: "1458067430". */
@@ -84,7 +87,8 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
   /* Optional. Override Mobilecommons opt-in path. */
   mc_opt_in_path_id: Number,
 
-  /* Required. An array of variables to inject into Mandrill template.
+  /*
+    Required. An array of variables to inject into Mandrill template.
     Required keys: "MEMBER_COUNT", "FNAME", "CAMPAIGN_TITLE", "CAMPAIGN_LINK".
 
     For single campaigns required:
