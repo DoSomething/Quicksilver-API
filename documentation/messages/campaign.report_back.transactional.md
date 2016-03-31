@@ -96,9 +96,6 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
   /* Required. Phoenix campaign id. Example: "1334". */
   campaign_id: Number,
 
-  /* Required. A country of campaign user subscribed to. Example: "US". */
-  campaign_country: String,
-
   /* Optional. The default is generated base on "user_country" value gathered */
   /* from user settings found for "email" or "user_id". */
   /* Example: "mb-campaign-signup-US". Defining this value allows */
@@ -118,6 +115,7 @@ Changes:
 - :x: `merge_var: IMPACT_NUMBER` value from Phoenix
 - :x: `merge_var: IMPACT_NOUN` value from Phoenix
 - :x: `merge_var: REPORTBACK_IMAGE_MARKUP` value from Phoenix
+- :x: `campaign_country` value from Phoenix, campaign signup
 - :x: `merge_var: FNAME` value from Northstar
 - :x: `activity_timestamp` set in Quicksilver API
 - :x: `user_country` value from Northstar
