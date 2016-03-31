@@ -84,9 +84,14 @@ Accessed by connecting to RabbitMQ server and sending message in the following f
   /* Optional. Override Mobilecommons opt-in path. */
   mc_opt_in_path_id: Number,
 
-  /* Required. An array of variables to inject into Mandrill template. */
-  /* Required keys: "MEMBER_COUNT", "FNAME", "CAMPAIGN_TITLE",  */
-  /* "CAMPAIGN_LINK", "CALL_TO_ACTION", "STEP_ONE", "STEP_TWO", "STEP_THREE". */
+  /* Required. An array of variables to inject into Mandrill template.
+    Required keys: "MEMBER_COUNT", "FNAME", "CAMPAIGN_TITLE", "CAMPAIGN_LINK".
+
+    For single campaigns required:
+    "CALL_TO_ACTION", "STEP_ONE", "STEP_TWO", "STEP_THREE".
+
+    For campaign groups required: "CAMPAIGN_COPY".
+  */
   merge_vars: Array,
 
 }
@@ -139,6 +144,7 @@ Changes:
 - :x: `merge_var: STEP_ONE` value from Phoenix
 - :x: `merge_var: STEP_TWO` value from Phoenix
 - :x: `merge_var: STEP_THREE` value from Phoenix
+- :x: `merge_var: CAMPAIGN_COPY` value from Phoenix
 - :x: `merge_var: FNAME` value from Northstar
 - :x: `mailchimp_list_id` value from Phoenix
 - :x: `mailchimp_grouping_id` value from Phoenix
