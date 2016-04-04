@@ -48,13 +48,13 @@ TODO
 - :x: `merge_var: MEMBER_COUNT` retrieved from Phoenix: see [API](https://github.com/DoSomething/phoenix/wiki/API#get-member-count)
 - :x: `merge_var: FNAME` value from Northstar
 - :x: `activity_timestamp` set in Quicksilver API
-- :x: `mailchimp_list_id` determined in API
+- :x: `mailchimp_list_id` determined in API based on `user_county` collected from Northstar.
 - :x: `subscribed` removed, always `1` as transaction request enables user email subscription preference.
 - :x: `user_language` value from Northstar
 - :x: `birthdate` value from Northstar
 - :heavy_exclamation_mark: `email_tag` will be determined from `application_id`
 - :heavy_exclamation_mark: `application_id` new optional field to determine client app
-- :heavy_exclamation_mark: `email_template` should be determined from `user_country` but can be defined to use specific template.
+- :heavy_exclamation_mark: `email_template` should be determined from `user_country` and `activity` but can be optionally defined to use specific template.
 - :heavy_exclamation_mark: `birthdate` format changed to [ISO-8601](https://en.wikipedia.org/wiki/ISO_8601)
 - :heavy_exclamation_mark: `user_id` Phoenix user id is replaced with [Northstar](https://github.com/DoSomething/northstar/blob/dev/documentation/endpoints/users.md#retrieve-a-user) user id.
 
