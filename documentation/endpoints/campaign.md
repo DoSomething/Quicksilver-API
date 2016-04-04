@@ -126,7 +126,7 @@ TODO
 - :x: `merge_var: IMPACT_NUMBER` value from Phoenix
 - :x: `merge_var: IMPACT_NOUN` value from Phoenix
 - :x: `merge_var: REPORTBACK_IMAGE_MARKUP` value from Phoenix
-- :x: `campaign_country` value from Phoenix, campaign signup
+- :x: `campaign_language` value from Phoenix, based on campaign signup of the same campaign ID.
 - :x: `merge_var: FNAME` value from Northstar
 - :x: `activity_timestamp` set in Quicksilver API
 - :x: `user_country` value from Northstar
