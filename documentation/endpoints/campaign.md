@@ -63,12 +63,13 @@ TODO
 - :x: `mc_opt_in_path_id` value from Phoenix
 - :x: `activity_timestamp` set in Quicksilver API
 - :x: `user_language` value from Northstar
-- :x: `user_country` value from Northstar
+- :x: `campaign_language` value from Phoenix
+- :x: `campaign_country` value from Phoenix
 - :x: `subscribed` removed, always `1` as transaction request enables user email subscription preference.
 - :heavy_exclamation_mark: `event_id` renamed to `campaign_id`
-- :heavy_exclamation_mark: `email_tag` will be determined from `application_id`
+- :heavy_exclamation_mark: `email_tag` will be determined from `application_id` and `activity`.
 - :heavy_exclamation_mark: `application_id` new optional field to determine client app
-- :heavy_exclamation_mark: `email_template` should be determined from `user_country` but can be defined to use specific template.
+- :heavy_exclamation_mark: `email_template` should be determined from `campaign_country`, `campaign_language` and `user_language` but can be defined to use specific template.
 - :heavy_exclamation_mark: `user_id` Phoenix user id is replaced with [Northstar](https://github.com/DoSomething/northstar/blob/dev/documentation/endpoints/users.md#retrieve-a-user) user id.
 
 
@@ -126,7 +127,7 @@ TODO
 - :x: `merge_var: IMPACT_NUMBER` value from Phoenix
 - :x: `merge_var: IMPACT_NOUN` value from Phoenix
 - :x: `merge_var: REPORTBACK_IMAGE_MARKUP` value from Phoenix
-- :x: `campaign_country` value from Phoenix, campaign signup
+- :x: `campaign_language` value from Phoenix, based on campaign signup of the same campaign ID.
 - :x: `merge_var: FNAME` value from Northstar
 - :x: `activity_timestamp` set in Quicksilver API
 - :x: `user_country` value from Northstar
