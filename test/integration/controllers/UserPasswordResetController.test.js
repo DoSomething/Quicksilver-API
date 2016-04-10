@@ -17,12 +17,10 @@ describe('Requests to the root (/user/password) path with missing required body 
       })
       .expect(422)
       .expect("content-type", /json/)
-      .end(function(err, response) {
-        if (err) {
-          throw err;
-        }
-        response.status.should.equal(422)
-        response.body.should.equal("OK")
+      .end(function(err, res) {
+        if (err) throw err;
+        res.status.should.equal(422);
+        res.body[0].should.have.property('error');
         done();
       });
   });
