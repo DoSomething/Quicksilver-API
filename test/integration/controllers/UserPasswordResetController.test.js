@@ -5,6 +5,31 @@ var request = require('supertest');
 var should = require('should');
 
 /**
+ * Test invalid /user/password endpoint.
+ */
+describe('Requests to the root (/user/password) path with missing required body parameters.', function() {
+  
+  it('POST: Invalid password reset request with missing body parameters returns expected 422 - Unprocessable due to request validation error results.', function(done) {
+
+    request(sails.hooks.http.app)
+      .post('/api/v1/user/password')
+      .send({
+      })
+      .expect(422)
+      .expect("content-type", /json/)
+      .end(function(err, response) {
+        if (err) {
+          throw err;
+        }
+        response.status.should.equal(422)
+        response.body.should.equal("OK")
+        done();
+      });
+  });
+  
+});
+
+/**
  * Test /user/password endpoint.
  */
 describe('Requests to the root (/user/password) path', function() {
