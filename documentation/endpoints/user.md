@@ -99,6 +99,10 @@ TODO
 
 [user.password_reset.transactional](../messages/user.password_reset.transactional.md)
 
+**Message Flow Diagram**
+
+![https://raw.githubusercontent.com/DoSomething/quicksilver-api/master/resources/quicksilver-api_user-password_reset-transactional-thumbnail.png](https://raw.githubusercontent.com/DoSomething/quicksilver-api/master/resources/quicksilver-api_user-password_reset-transactional.png)
+
 **Changelog**
 
 - :x: `activity`: always `user_password` for this message type
