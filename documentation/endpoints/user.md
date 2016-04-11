@@ -101,7 +101,7 @@ TODO
 
 **Message Flow Diagram**
 
-![https://raw.githubusercontent.com/DoSomething/quicksilver-api/master/resources/quicksilver-api_user-password_reset-transactional-thumbnail.png/100/100/](https://raw.githubusercontent.com/DoSomething/quicksilver-api/master/resources/quicksilver-api_user-password_reset-transactional.png "User Password Reset - Message Flow Diagram")
+![https://raw.githubusercontent.com/DoSomething/quicksilver-api/master/resources/quicksilver-api_user-password_reset-transactional-thumbnail.png/250/300/](https://raw.githubusercontent.com/DoSomething/quicksilver-api/master/resources/quicksilver-api_user-password_reset-transactional.png "User Password Reset - Message Flow Diagram")
 
 **Changelog**
 
