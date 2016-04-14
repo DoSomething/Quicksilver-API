@@ -12,7 +12,7 @@
 
 module.exports = {
 
-  appUrl: 'http://localhost:1337/',
+  appUrl: 'http://localhost:1337',
 
   /***************************************************************************
    * Set the default database connection for models in the development       *

@@ -8,7 +8,7 @@
 module.exports = {
 
   /**
-   * `UserController.index()`
+   * `ApiController.index()`
    */
   index: function (req, res) {
     return res.json({

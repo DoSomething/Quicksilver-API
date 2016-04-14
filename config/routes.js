@@ -35,7 +35,7 @@ module.exports.routes = {
   '/': '/api/',
   '/api': 'ApiController',
   '/api/v1': 'v1/ApiController.index',
-  '/api/v1/user': 'v1/UserController',
+  '/api/v1/user': 'v1/UserController.index',
   '/api/v1/user/register': 'v1/UserController.register',
   '/api/v1/user/password': 'v1/UserController.password',
 

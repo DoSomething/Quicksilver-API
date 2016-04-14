@@ -8,6 +8,16 @@
 module.exports = {
 
   /**
+   * `UserController.index()`
+   */
+  index: function (req, res) {
+    return res.json({
+      register: sails.config.appUrl + sails.getUrlFor('v1/UserController.register'),
+      password: sails.config.appUrl + sails.getUrlFor('v1/UserController.password'),
+    });
+  },
+
+  /**
    * `UserController.register()`
    */
   register: function (req, res) {
