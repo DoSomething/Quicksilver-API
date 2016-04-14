@@ -14,7 +14,7 @@ module.exports = {
 
   // Just a placeholder until the app is actualy deployed.
   // @todo: change to real hostname.
-  appUrl: 'http://localhost/',
+  appUrl: 'http://localhost',
 
   /***************************************************************************
    * Set the default database connection for models in the production        *
