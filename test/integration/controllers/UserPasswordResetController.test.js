@@ -37,7 +37,7 @@ describe('Requests to the root (/user/password) path', function() {
     request(sails.hooks.http.app)
       .post('/api/v1/user/password')
       .send({
-        "user_id": "1234567"
+        "user_id": "54f9e1c8469c64df6c8b4568"
       })
       .expect(200)
       .expect("content-type", /json/)
@@ -70,7 +70,7 @@ describe('Requests to the root (/user/password) path', function() {
     request(sails.hooks.http.app)
       .post('/api/v1/user/password')
       .send({
-        "email": "test@test.com"
+        "email": "info@dosomething.org"
       })
       .expect(200)
       .expect("content-type", /json/)
@@ -103,7 +103,7 @@ describe('Requests to the root (/user/password) path', function() {
     request(sails.hooks.http.app)
       .post('/api/v1/user/password')
       .send({
-        "mobile": "1234567890"
+        "mobile": "15556669999"
       })
       .expect(201)
       .expect("content-type", /json/)
