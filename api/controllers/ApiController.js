@@ -12,7 +12,7 @@ module.exports = {
    */
   index: function (req, res) {
     return res.json({
-      v1: sails.getBaseUrl() + sails.getUrlFor('v1/ApiController.index'),
+      v1: sails.config.appUrl + sails.getUrlFor('v1/ApiController.index'),
     });
   },
 
