@@ -47,7 +47,7 @@ describe('Requests to the root (/user/password) path', function() {
         }
         response.status.should.equal(200);
         response.body[0].should.have.property('activity');
-        response.body[0].activity.should.equal("user_password");
+        response.body[0].activity.should.equal('user_password');
         response.body[0].should.have.property('email');
         response.body[0].should.have.property('uid');
         response.body[0].should.have.property('merge_vars');
@@ -80,7 +80,7 @@ describe('Requests to the root (/user/password) path', function() {
         }
         response.status.should.equal(200)
         response.body[0].should.have.property('activity');
-        response.body[0].activity.should.equal("user_password");
+        response.body[0].activity.should.equal('user_password');
         response.body[0].should.have.property('email');
         response.body[0].should.have.property('uid');
         response.body[0].should.have.property('merge_vars');
@@ -113,7 +113,7 @@ describe('Requests to the root (/user/password) path', function() {
         }
         response.status.should.equal(200)
         response.body[0].should.have.property('activity');
-        response.body[0].activity.should.equal("user_password");
+        response.body[0].activity.should.equal('user_password');
         response.body[0].should.have.property('email');
         response.body[0].should.have.property('uid');
         response.body[0].should.have.property('merge_vars');
