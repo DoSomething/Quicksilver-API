@@ -12,6 +12,8 @@
 
 module.exports = {
 
+  // Just a placeholder until the app is actualy deployed.
+  // @todo: change to real hostname.
   appUrl: 'http://localhost/',
 
   /***************************************************************************
