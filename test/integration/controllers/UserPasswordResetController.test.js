@@ -79,7 +79,21 @@ describe('Requests to the root (/user/password) path', function() {
           throw err;
         }
         response.status.should.equal(200)
-        response.body.should.equal("OK")
+        response.body[0].should.have.property('activity');
+        response.body[0].activity.should.equal("user_password");
+        response.body[0].should.have.property('email');
+        response.body[0].should.have.property('uid');
+        response.body[0].should.have.property('merge_vars');
+        response.body[0].merge_vars.should.have.property('MEMBER_COUNT');
+        response.body[0].merge_vars.should.have.property('FNAME');
+        response.body[0].merge_vars.should.have.property('RESET_LINK');
+        response.body[0].should.have.property('user_country');
+        response.body[0].should.have.property('user_language');
+        response.body[0].should.have.property('email_template');
+        response.body[0].should.have.property('email_tags');
+        response.body[0].email_tags[0].should.equal('drupal_user_password');
+        response.body[0].should.have.property('activity_timestamp');
+        response.body[0].should.have.property('application_id');
         done();
       });
   });
