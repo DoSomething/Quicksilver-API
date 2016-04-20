@@ -62,7 +62,6 @@ describe('Requests to the root (/user/password) path', function() {
       response.body[0].email_tags[0].should.equal('drupal_user_password');
       response.body[0].should.have.property('activity_timestamp');
       response.body[0].should.have.property('application_id');
-
       done();
     });
   });
