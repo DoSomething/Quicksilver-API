@@ -21,7 +21,7 @@ describe('Requests to the root (/api) path', function() {
       .expect("content-type", /json/, done)
   });
 
-  it('GET: Returns v1 route', function(done) {
+  it('GET: Redirects to v1 path and returns v1 route details', function(done) {
     request(sails.hooks.http.app)
       .get('/api')
       .expect("content-type", /json/)
@@ -53,7 +53,7 @@ describe('Requests to v1 root (/api/v1) path', function() {
       .expect("content-type", /json/, done)
   });
 
-  it('GET: Returns v1 route', function(done) {
+  it('GET: Returns v1 paths', function(done) {
 
     request(sails.hooks.http.app)
       .get('/api/v1')
