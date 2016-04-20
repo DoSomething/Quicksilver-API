@@ -16,7 +16,7 @@ describe('Requests to the root (/api) path', function() {
   });
 
   it('GET: Returns JSON format', function(done) {
-    request(app)
+    request(sails.hooks.http.app)
       .get('/api')
       .expect("content-type", /json/, done)
   });
