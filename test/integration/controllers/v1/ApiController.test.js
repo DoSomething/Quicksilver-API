@@ -16,9 +16,21 @@ describe('Requests to the root (/api) path', function() {
   });
 
   it('GET: Returns JSON format', function(done) {
-    request(app)
+    request(sails.hooks.http.app)
       .get('/api')
       .expect("content-type", /json/, done)
+  });
+
+  it('GET: Returns v1 route', function(done) {
+    request(sails.hooks.http.app)
+      .get('/api')
+      .expect("content-type", /json/)
+      .end(function(err, res) {
+        if (err) throw err;
+        res.body.should.have.property('v1');
+        res.body.v1.should.endWith('/api/v1');
+        done();
+      });
   });
 
 });
