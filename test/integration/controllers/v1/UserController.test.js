@@ -47,21 +47,21 @@ describe('Requests to the root (/user/password) path', function() {
         throw err;
       }
       response.status.should.equal(200);
-      response.body[0].should.have.property('activity');
-      response.body[0].activity.should.equal('user_password');
-      response.body[0].should.have.property('email');
-      response.body[0].should.have.property('uid');
-      response.body[0].should.have.property('merge_vars');
-      response.body[0].merge_vars.should.have.property('MEMBER_COUNT');
-      response.body[0].merge_vars.should.have.property('FNAME');
-      response.body[0].merge_vars.should.have.property('RESET_LINK');
-      response.body[0].should.have.property('user_country');
-      response.body[0].should.have.property('user_language');
-      response.body[0].should.have.property('email_template');
-      response.body[0].should.have.property('email_tags');
-      response.body[0].email_tags[0].should.equal('drupal_user_password');
-      response.body[0].should.have.property('activity_timestamp');
-      response.body[0].should.have.property('application_id');
+      response.body.should.have.property('activity');
+      response.body.activity.should.equal('user_password');
+      response.body.should.have.property('email');
+      response.body.should.have.property('uid');
+      response.body.should.have.property('merge_vars');
+      response.body.merge_vars.should.have.property('MEMBER_COUNT');
+      response.body.merge_vars.should.have.property('FNAME');
+      response.body.merge_vars.should.have.property('RESET_LINK');
+      response.body.should.have.property('user_country');
+      response.body.should.have.property('user_language');
+      response.body.should.have.property('email_template');
+      response.body.should.have.property('email_tags');
+      response.body.email_tags[0].should.equal('drupal_user_password');
+      response.body.should.have.property('activity_timestamp');
+      response.body.should.have.property('application_id');
       done();
     });
   });
@@ -80,21 +80,21 @@ describe('Requests to the root (/user/password) path', function() {
         throw err;
       }
       response.status.should.equal(200)
-      response.body[0].should.have.property('activity');
-      response.body[0].activity.should.equal('user_password');
-      response.body[0].should.have.property('email');
-      response.body[0].should.have.property('uid');
-      response.body[0].should.have.property('merge_vars');
-      response.body[0].merge_vars.should.have.property('MEMBER_COUNT');
-      response.body[0].merge_vars.should.have.property('FNAME');
-      response.body[0].merge_vars.should.have.property('RESET_LINK');
-      response.body[0].should.have.property('user_country');
-      response.body[0].should.have.property('user_language');
-      response.body[0].should.have.property('email_template');
-      response.body[0].should.have.property('email_tags');
-      response.body[0].email_tags[0].should.equal('drupal_user_password');
-      response.body[0].should.have.property('activity_timestamp');
-      response.body[0].should.have.property('application_id');
+      response.body.should.have.property('activity');
+      response.body.activity.should.equal('user_password');
+      response.body.should.have.property('email');
+      response.body.should.have.property('uid');
+      response.body.should.have.property('merge_vars');
+      response.body.merge_vars.should.have.property('MEMBER_COUNT');
+      response.body.merge_vars.should.have.property('FNAME');
+      response.body.merge_vars.should.have.property('RESET_LINK');
+      response.body.should.have.property('user_country');
+      response.body.should.have.property('user_language');
+      response.body.should.have.property('email_template');
+      response.body.should.have.property('email_tags');
+      response.body.email_tags[0].should.equal('drupal_user_password');
+      response.body.should.have.property('activity_timestamp');
+      response.body.should.have.property('application_id');
       done();
     });
   });
@@ -106,28 +106,28 @@ describe('Requests to the root (/user/password) path', function() {
     .send({
       "mobile": "15556669999"
     })
-    .expect(201)
+    .expect(200)
     .expect("content-type", /json/)
     .end(function(err, response) {
       if (err) {
         throw err;
       }
       response.status.should.equal(200)
-      response.body[0].should.have.property('activity');
-      response.body[0].activity.should.equal('user_password');
-      response.body[0].should.have.property('email');
-      response.body[0].should.have.property('uid');
-      response.body[0].should.have.property('merge_vars');
-      response.body[0].merge_vars.should.have.property('MEMBER_COUNT');
-      response.body[0].merge_vars.should.have.property('FNAME');
-      response.body[0].merge_vars.should.have.property('RESET_LINK');
-      response.body[0].should.have.property('user_country');
-      response.body[0].should.have.property('user_language');
-      response.body[0].should.have.property('email_template');
-      response.body[0].should.have.property('email_tags');
-      response.body[0].email_tags[0].should.equal('drupal_user_password');
-      response.body[0].should.have.property('activity_timestamp');
-      response.body[0].should.have.property('application_id');
+      response.body.should.have.property('activity');
+      response.body.activity.should.equal('user_password');
+      response.body.should.have.property('email');
+      response.body.should.have.property('uid');
+      response.body.should.have.property('merge_vars');
+      response.body.merge_vars.should.have.property('MEMBER_COUNT');
+      response.body.merge_vars.should.have.property('FNAME');
+      response.body.merge_vars.should.have.property('RESET_LINK');
+      response.body.should.have.property('user_country');
+      response.body.should.have.property('user_language');
+      response.body.should.have.property('email_template');
+      response.body.should.have.property('email_tags');
+      response.body.email_tags[0].should.equal('drupal_user_password');
+      response.body.should.have.property('activity_timestamp');
+      response.body.should.have.property('application_id');
       done();
     });
   });
