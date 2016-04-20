@@ -62,6 +62,7 @@ describe('Requests to the root (/user/password) path', function() {
       response.body[0].email_tags[0].should.equal('drupal_user_password');
       response.body[0].should.have.property('activity_timestamp');
       response.body[0].should.have.property('application_id');
+
       done();
     });
   });
@@ -106,7 +107,7 @@ describe('Requests to the root (/user/password) path', function() {
     .send({
       "mobile": "15556669999"
     })
-    .expect(201)
+    .expect(200)
     .expect("content-type", /json/)
     .end(function(err, response) {
       if (err) {
