@@ -32,12 +32,12 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': '/api/',
-  '/api': 'ApiController',
-  '/api/v1': 'v1/ApiController.index',
-  '/api/v1/user': 'v1/UserController.index',
-  '/api/v1/user/register': 'v1/UserController.register',
-  '/api/v1/user/password': 'v1/UserController.password',
+  'get  /': '/api/',
+  'get  /api': 'ApiController',
+  'get  /api/v1': 'v1/ApiController.index',
+  'get  /api/v1/user': 'v1/UserController.index',
+  'post /api/v1/user/register': 'v1/UserController.register',
+  'post /api/v1/user/password': 'v1/UserController.password',
 
   /***************************************************************************
   *                                                                          *
