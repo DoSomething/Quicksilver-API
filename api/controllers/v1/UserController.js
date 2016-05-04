@@ -31,8 +31,12 @@ module.exports = {
    * `UserController.password()`
    */
   password: function (req, res) {
-    return res.json({
-      todo: 'password() is not implemented yet!'
+    UserPassword.create(req.allParams())
+    .then(function(data) {
+      return res.send(data);
+    })
+    .caught(function(e) {
+      return res.negotiate(e);
     });
   }
 };
