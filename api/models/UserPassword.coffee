@@ -3,17 +3,17 @@ module.exports =
   migrate: 'safe'
 
   # Turn off auto fields.
-  autoCreatedAt: false
-  autoUpdatedAt: false
-  autoPK: false
+  autoCreatedAt: off
+  autoUpdatedAt: off
+  autoPK: off
 
   # Validation rules.
   attributes:
     user_id:
       type: 'string'
-      hexadecimal: true
-      required: true
+      hexadecimal: yes
+      required: yes
     email:
       type: 'string'
-      email: true
-      required: true
+      email: yes
+      required: yes
