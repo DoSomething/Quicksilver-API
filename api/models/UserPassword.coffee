@@ -36,9 +36,9 @@ module.exports =
     email_template:
       type: 'string'
 
-  # Validate presence at least one of fields.
+  # Validate the presences of at least one of the fields.
   beforeValidate: (values, cb) ->
-    # The list of fields.
+    # The list of possible fields.
     fields = ['user_id', 'email', 'mobile']
 
     # Check if at least one field is present.
