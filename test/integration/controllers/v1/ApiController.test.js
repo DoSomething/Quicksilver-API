@@ -25,10 +25,10 @@ describe('Requests to the root (/api) path', function() {
     request(sails.hooks.http.app)
       .get('/api')
       .expect("content-type", /json/)
-      .end(function(err, response) {
+      .end(function(err, res) {
         if (err) throw err;
-        response.body.should.have.property('v1');
-        response.body.v1.should.endWith('/api/v1');
+        res.body.should.have.property('v1');
+        res.body.v1.should.endWith('/api/v1');
         done();
       });
   });
@@ -58,13 +58,13 @@ describe('Requests to v1 root (/api/v1) path', function() {
     request(sails.hooks.http.app)
       .get('/api/v1')
       .expect("content-type", /json/)
-      .end(function(err, response) {
+      .end(function(err, res) {
         if (err) throw err;
-        response.body.should.have.property('user');
-        response.body.user.should.have.property('register');
-        response.body.user.register.should.endWith('/api/v1/user/register');
-        response.body.user.should.have.property('password');
-        response.body.user.password.should.endWith('/api/v1/user/password');
+        res.body.should.have.property('user');
+        res.body.user.should.have.property('register');
+        res.body.user.register.should.endWith('/api/v1/user/register');
+        res.body.user.should.have.property('password');
+        res.body.user.password.should.endWith('/api/v1/user/password');
         done();
       });
   });
