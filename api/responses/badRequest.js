@@ -31,6 +31,15 @@ module.exports = function badRequest(data, options) {
   }
   else sails.log.verbose('Sending 400 ("Bad Request") response');
 
+  // Handle validation errors
+  if (data.code == 'E_VALIDATION') {
+    var cleanError = {}
+    if (data.reason) cleanError.reason = data.reason;
+    if (data.invalidAttributes) cleanError.errors = data.invalidAttributes;
+    res.status(422);
+    return res.jsonx(cleanError);
+  }
+
   // Only include errors in response if application environment
   // is not set to 'production'.  In production, we shouldn't
   // send back any identifying information about errors.
