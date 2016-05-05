@@ -8,7 +8,7 @@ var should = require('should');
  * Test invalid /user/password endpoint.
  */
 describe('Requests to the root (/user/password) path with missing required body parameters.', function() {
-  
+
   it('POST: Invalid password reset request with missing body parameters returns expected 422 - Unprocessable due to request validation error results.', function(done) {
 
     request(sails.hooks.http.app)
@@ -25,14 +25,14 @@ describe('Requests to the root (/user/password) path with missing required body 
         done();
       });
   });
-  
+
 });
 
 /**
  * Test /user/password endpoint.
  */
 describe('Requests to the root (/user/password) path', function() {
-  
+
   it('POST: Valid password request with only user_id returns expected results.', function(done) {
 
   request(sails.hooks.http.app)
@@ -65,7 +65,7 @@ describe('Requests to the root (/user/password) path', function() {
       done();
     });
   });
-  
+
   it('POST: Valid password request with only email returns expected results.', function(done) {
 
   request(sails.hooks.http.app)
@@ -98,7 +98,7 @@ describe('Requests to the root (/user/password) path', function() {
       done();
     });
   });
-  
+
   it('POST: Valid password request with only mobile returns expected results.', function(done) {
 
   request(sails.hooks.http.app)
@@ -131,5 +131,5 @@ describe('Requests to the root (/user/password) path', function() {
       done();
     });
   });
-  
+
 });
