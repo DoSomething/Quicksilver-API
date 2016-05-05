@@ -13,15 +13,20 @@ describe('Requests to the root (/user/password) path with missing required body 
 
     request(sails.hooks.http.app)
       .post('/api/v1/user/password')
-      .send({
-
-      })
+      .send({})
       .expect(422)
       .expect("content-type", /json/)
-      .end(function(err, res) {
+      .end(function(err, response) {
         if (err) throw err;
-        res.status.should.equal(422);
-        res.body[0].should.have.property('error');
+        response.status.should.equal(422);
+        response.body.should.have.property('reason');
+        response.body.should.have.property('errors');
+        response.body.errors.should.have.keys('user_id', 'email', 'mobile');
+
+        var requiredRule = [{"rule": "required"}];
+        response.body.errors.user_id.should.containDeep(requiredRule);
+        response.body.errors.email.should.containDeep(requiredRule);
+        response.body.errors.mobile.should.containDeep(requiredRule);
         done();
       });
   });
