@@ -16,17 +16,17 @@ describe('Requests to the root (/user/password) path with missing required body 
       .send({})
       .expect(422)
       .expect("content-type", /json/)
-      .end(function(err, response) {
+      .end(function(err, res) {
         if (err) throw err;
-        response.status.should.equal(422);
-        response.body.should.have.property('reason');
-        response.body.should.have.property('errors');
-        response.body.errors.should.have.keys('user_id', 'email', 'mobile');
+        res.status.should.equal(422);
+        res.body.should.have.property('reason');
+        res.body.should.have.property('errors');
+        res.body.errors.should.have.keys('user_id', 'email', 'mobile');
 
         var requiredRule = [{"rule": "required"}];
-        response.body.errors.user_id.should.containDeep(requiredRule);
-        response.body.errors.email.should.containDeep(requiredRule);
-        response.body.errors.mobile.should.containDeep(requiredRule);
+        res.body.errors.user_id.should.containDeep(requiredRule);
+        res.body.errors.email.should.containDeep(requiredRule);
+        res.body.errors.mobile.should.containDeep(requiredRule);
         done();
       });
   });
@@ -47,26 +47,26 @@ describe('Requests to the root (/user/password) path', function() {
     })
     .expect(200)
     .expect("content-type", /json/)
-    .end(function(err, response) {
+    .end(function(err, res) {
       if (err) {
         throw err;
       }
-      response.status.should.equal(200);
-      response.body.should.have.property('activity');
-      response.body.activity.should.equal('user_password');
-      response.body.should.have.property('email');
-      response.body.should.have.property('uid');
-      response.body.should.have.property('merge_vars');
-      response.body.merge_vars.should.have.property('MEMBER_COUNT');
-      response.body.merge_vars.should.have.property('FNAME');
-      response.body.merge_vars.should.have.property('RESET_LINK');
-      response.body.should.have.property('user_country');
-      response.body.should.have.property('user_language');
-      response.body.should.have.property('email_template');
-      response.body.should.have.property('email_tags');
-      response.body.email_tags[0].should.equal('drupal_user_password');
-      response.body.should.have.property('activity_timestamp');
-      response.body.should.have.property('application_id');
+      res.status.should.equal(200);
+      res.body.should.have.property('activity');
+      res.body.activity.should.equal('user_password');
+      res.body.should.have.property('email');
+      res.body.should.have.property('uid');
+      res.body.should.have.property('merge_vars');
+      res.body.merge_vars.should.have.property('MEMBER_COUNT');
+      res.body.merge_vars.should.have.property('FNAME');
+      res.body.merge_vars.should.have.property('RESET_LINK');
+      res.body.should.have.property('user_country');
+      res.body.should.have.property('user_language');
+      res.body.should.have.property('email_template');
+      res.body.should.have.property('email_tags');
+      res.body.email_tags[0].should.equal('drupal_user_password');
+      res.body.should.have.property('activity_timestamp');
+      res.body.should.have.property('application_id');
       done();
     });
   });
@@ -80,26 +80,26 @@ describe('Requests to the root (/user/password) path', function() {
     })
     .expect(200)
     .expect("content-type", /json/)
-    .end(function(err, response) {
+    .end(function(err, res) {
       if (err) {
         throw err;
       }
-      response.status.should.equal(200)
-      response.body.should.have.property('activity');
-      response.body.activity.should.equal('user_password');
-      response.body.should.have.property('email');
-      response.body.should.have.property('uid');
-      response.body.should.have.property('merge_vars');
-      response.body.merge_vars.should.have.property('MEMBER_COUNT');
-      response.body.merge_vars.should.have.property('FNAME');
-      response.body.merge_vars.should.have.property('RESET_LINK');
-      response.body.should.have.property('user_country');
-      response.body.should.have.property('user_language');
-      response.body.should.have.property('email_template');
-      response.body.should.have.property('email_tags');
-      response.body.email_tags[0].should.equal('drupal_user_password');
-      response.body.should.have.property('activity_timestamp');
-      response.body.should.have.property('application_id');
+      res.status.should.equal(200)
+      res.body.should.have.property('activity');
+      res.body.activity.should.equal('user_password');
+      res.body.should.have.property('email');
+      res.body.should.have.property('uid');
+      res.body.should.have.property('merge_vars');
+      res.body.merge_vars.should.have.property('MEMBER_COUNT');
+      res.body.merge_vars.should.have.property('FNAME');
+      res.body.merge_vars.should.have.property('RESET_LINK');
+      res.body.should.have.property('user_country');
+      res.body.should.have.property('user_language');
+      res.body.should.have.property('email_template');
+      res.body.should.have.property('email_tags');
+      res.body.email_tags[0].should.equal('drupal_user_password');
+      res.body.should.have.property('activity_timestamp');
+      res.body.should.have.property('application_id');
       done();
     });
   });
@@ -113,26 +113,26 @@ describe('Requests to the root (/user/password) path', function() {
     })
     .expect(200)
     .expect("content-type", /json/)
-    .end(function(err, response) {
+    .end(function(err, res) {
       if (err) {
         throw err;
       }
-      response.status.should.equal(200)
-      response.body.should.have.property('activity');
-      response.body.activity.should.equal('user_password');
-      response.body.should.have.property('email');
-      response.body.should.have.property('uid');
-      response.body.should.have.property('merge_vars');
-      response.body.merge_vars.should.have.property('MEMBER_COUNT');
-      response.body.merge_vars.should.have.property('FNAME');
-      response.body.merge_vars.should.have.property('RESET_LINK');
-      response.body.should.have.property('user_country');
-      response.body.should.have.property('user_language');
-      response.body.should.have.property('email_template');
-      response.body.should.have.property('email_tags');
-      response.body.email_tags[0].should.equal('drupal_user_password');
-      response.body.should.have.property('activity_timestamp');
-      response.body.should.have.property('application_id');
+      res.status.should.equal(200)
+      res.body.should.have.property('activity');
+      res.body.activity.should.equal('user_password');
+      res.body.should.have.property('email');
+      res.body.should.have.property('uid');
+      res.body.should.have.property('merge_vars');
+      res.body.merge_vars.should.have.property('MEMBER_COUNT');
+      res.body.merge_vars.should.have.property('FNAME');
+      res.body.merge_vars.should.have.property('RESET_LINK');
+      res.body.should.have.property('user_country');
+      res.body.should.have.property('user_language');
+      res.body.should.have.property('email_template');
+      res.body.should.have.property('email_tags');
+      res.body.email_tags[0].should.equal('drupal_user_password');
+      res.body.should.have.property('activity_timestamp');
+      res.body.should.have.property('application_id');
       done();
     });
   });
