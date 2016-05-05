@@ -36,6 +36,7 @@ module.exports = function badRequest(data, options) {
     var cleanError = {}
     if (data.reason) cleanError.reason = data.reason;
     if (data.invalidAttributes) cleanError.errors = data.invalidAttributes;
+    res.status(422);
     return res.jsonx(cleanError);
   }
 
