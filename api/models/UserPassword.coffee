@@ -1,3 +1,8 @@
+# UserPassword.coffee
+#
+# @description :: Accepts and validates incoming POST request for user password.
+# @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
+
 module.exports =
   # Allow only whitelisted attributes.
   schema: true
@@ -56,8 +61,3 @@ module.exports =
 
     # Continue.
     cb()
-
-  # Remove empty values from model.
-  # afterValidate: (values, cb) ->
-    # delete values[i] for i of values when !values[i]
-    # cb()
