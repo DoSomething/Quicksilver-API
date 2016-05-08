@@ -1,5 +1,5 @@
 ###*
-# ApiController.test.js
+# ApiController.test
 ###
 
 request = require('supertest')
