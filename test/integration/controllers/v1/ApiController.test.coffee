@@ -15,13 +15,11 @@ describe 'Requests to the root (/api) path', ->
       .get('/api')
       .expect 200, done
     return
-  return
   it 'GET: Returns JSON format', (done) ->
     request(sails.hooks.http.app)
       .get('/api')
       .expect 'content-type', /json/, done
     return
-  return
   it 'GET: Redirects to v1 path and returns v1 route details', (done) ->
     request(sails.hooks.http.app)
       .get('/api')
@@ -46,7 +44,6 @@ describe 'Requests to v1 root (/api/v1) path', ->
       .get('/api/v1')
       .expect 200, done
     return
-  return
   it 'GET: Returns v1 paths', (done) ->
     request(sails.hooks.http.app)
       .get('/api/v1')
