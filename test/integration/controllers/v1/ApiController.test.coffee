@@ -17,3 +17,13 @@ describe 'Requests to the root (/api) path', ->
     request(sails.hooks.http.app).get('/api').expect 'content-type', /json/, done
     return
   return
+  it 'GET: Redirects to v1 path and returns v1 route details', (done) ->
+    request(sails.hooks.http.app).get('/api').expect('content-type', /json/).end (err, res) ->
+      if err
+        throw err
+      res.body.should.have.property 'v1'
+      res.body.v1.should.endWith '/api/v1'
+      done()
+      return
+    return
+  return
