@@ -56,20 +56,12 @@ module.exports = {
     // The list of possible fields.
     const fields = ['user_id', 'email', 'mobile'];
 
-    // Check if at least one field is present.
-    let found = false;
-    for (let i = 0; i < fields.length; i++) {
-      var field = fields[i];
-      if ((values[field] != null) && !_.isEmpty(values[field])) {
-        found = true;
-        break;
-      }
-    }
+    // Check if at least one field is present and truthy.
+    const found = fields.some(field => values[field]);
 
     // Turn off presence validations when at least one fields is present,
     // turn on when all fields are absent.
-    for (let j = 0; j < fields.length; j++) {
-      var field = fields[j];
+    fields.forEach((field) => {
       if (found) {
         // It should be possible to just set required to false,
         // but for some reason it turns off the rest of field rules.
@@ -78,7 +70,8 @@ module.exports = {
         // Reenable presence validation if no fields found.
         this._validator.validations[field].required = true;
       }
-    }
+      return true;
+    });
 
     // Continue.
     cb();
