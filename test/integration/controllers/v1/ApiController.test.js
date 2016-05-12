@@ -1,9 +1,11 @@
+'use strict';
+
 /**
  * ApiController.test
  */
 
-import request from 'supertest';
-import should from 'should';
+const request = require('supertest');
+const should = require('should');
 
 /**
  * Test API "ping" endpoint.

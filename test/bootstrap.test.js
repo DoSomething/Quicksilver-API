@@ -1,16 +1,15 @@
-var sails = require('sails');
+'use strict';
+
+const sails = require('sails');
 
 before(function(done) {
-
   // Increase the Mocha timeout so that Sails has enough time to lift.
   this.timeout(20000);
+  sails.lift({}, function(err, server) {
+    if (err) { return done(err); }
 
-  sails.lift({
-    // configuration for testing purposes
-  }, function(err, server) {
-    if (err) return done(err);
     // here you can load fixtures, etc.
-    done(err, sails);
+    return done(err, sails);
   });
 });
 

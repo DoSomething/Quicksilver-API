@@ -1,9 +1,11 @@
+'use strict';
+
 /**
  * UserController.test
  */
 
-import request from 'supertest';
-import should from 'should';
+ const request = require('supertest');
+ const should = require('should');
 
 /**
  * Test invalid /user/password endpoint.
