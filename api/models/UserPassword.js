@@ -1,6 +1,11 @@
-//
-// @description :: Accepts and validates incoming POST request for user password.
-// @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
+'use strict';
+
+/**
+ * UserPassword
+ *
+ * @description :: Accepts and validates incoming POST request for user password.
+ * @help        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
+ */
 
 module.exports = {
   // Allow only whitelisted attributes.
@@ -44,7 +49,7 @@ module.exports = {
   // Validate the presences of at least one of the fields.
   beforeValidate(values, cb) {
     // The list of possible fields.
-    let fields = ['user_id', 'email', 'mobile'];
+    const fields = ['user_id', 'email', 'mobile'];
 
     // Check if at least one field is present.
     let found = false;
@@ -71,6 +76,6 @@ module.exports = {
     }
 
     // Continue.
-    return cb();
+    cb();
   }
 };

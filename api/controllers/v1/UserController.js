@@ -1,13 +1,17 @@
-// UserController
-//
-// @description :: Server-side logic for managing users
-// @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+'use strict';
 
+/**
+ * UserController
+ *
+ * @description :: Server-side logic for managing users
+ * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
+ */
 
 module.exports = {
 
-  // `UserController.index()`
-
+  /**
+   * `UserController.index()`
+   */
   index(req, res) {
     return res.json({
       register: sails.config.appUrl + sails.getUrlFor('v1/UserController.register'),
@@ -16,8 +20,9 @@ module.exports = {
   },
 
 
-  // `UserController.register()`
-
+  /**
+   * `UserController.register()`
+   */
   register(req, res) {
     return res.json({
       todo: 'register() is not implemented yet!'
@@ -25,10 +30,11 @@ module.exports = {
   },
 
 
-  // `UserController.password()`
-
+  /**
+   * `UserController.password()`
+   */
   password(req, res) {
-    UserPassword.create(req.params.all())
+    return UserPassword.create(req.params.all())
     .then(result  => res.send(result))
     .caught(error => res.negotiate(error));
   }
