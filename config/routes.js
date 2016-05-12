@@ -32,7 +32,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'get  /': '/api/',
+  'get  /': '/api',
   'get  /api': 'ApiController',
   'get  /api/v1': 'v1/ApiController.index',
   'get  /api/v1/user': 'v1/UserController.index',

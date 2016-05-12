@@ -8,60 +8,36 @@ const request = require('supertest');
 const should = require('should');
 
 /**
- * Test API "ping" endpoint.
+ * Test root redirect.
  */
-describe('Requests to the root (/api) path', function() {
+describe('GET /', () => {
 
-  it('GET: Returns a 200 status code', done =>
+  it('should redirect to /api', done =>
     request(sails.hooks.http.app)
-    .get('/api')
-    .expect(200, done)
-  );
-
-  it('GET: Returns JSON format', done =>
-    request(sails.hooks.http.app)
-    .get('/api')
-    .expect('content-type', /json/, done)
-  );
-
-  it('GET: Redirects to v1 path and returns v1 route details', done =>
-    request(sails.hooks.http.app)
-    .get('/api')
-    .expect('content-type', /json/)
-    .end(function(err, res) {
-      if (err) { throw err; }
-      res.body.should.have.property('v1');
-      res.body.v1.should.endWith('/api/v1');
-      done();
-    })
+      .get('/')
+      .expect(302)
+      .expect('location', /^\/api$/)
+      .end(done)
   );
 
 });
 
+
 /**
- * Test API V1 information / status endpoint.
+ * Test API "ping" endpoint.
  */
-describe('Requests to v1 root (/api/v1) path', function() {
+describe('GET /api', () => {
 
-  it('GET: Returns a 200 status code', done =>
+  it('should respond with JSON list of API versions', done =>
     request(sails.hooks.http.app)
-    .get('/api/v1')
-    .expect(200, done)
-  );
-
-  it('GET: Returns v1 paths', done =>
-    request(sails.hooks.http.app)
-    .get('/api/v1')
-    .expect('content-type', /json/)
-    .end(function(err, res) {
-      if (err) { throw err; }
-      res.body.should.have.property('user');
-      res.body.user.should.have.property('register');
-      res.body.user.register.should.endWith('/api/v1/user/register');
-      res.body.user.should.have.property('password');
-      res.body.user.password.should.endWith('/api/v1/user/password');
-      done();
-    })
+      .get('/api')
+      .expect(200)
+      .expect('content-type', /json/)
+      .expect((res) => {
+        res.body.should.have.property('v1');
+        res.body.v1.should.endWith('/api/v1');
+      })
+      .end(done)
   );
 
 });
