@@ -8,36 +8,27 @@ const request = require('supertest');
 const should = require('should');
 
 /**
- * Test root redirect.
+ * Test API V1 information / status endpoint.
  */
-describe('GET /', () => {
+describe('GET /api/v1', () => {
 
-  it('should redirect to /api', done =>
+  it('should respond with JSON list of available endpoins', done =>
     request(sails.hooks.http.app)
-      .get('/')
-      .expect(302)
-      .expect('location', /^\/api$/)
-      .end(done)
-  );
-
-});
-
-
-/**
- * Test API "ping" endpoint.
- */
-describe('GET /api', () => {
-
-  it('should respond with JSON list of API versions', done =>
-    request(sails.hooks.http.app)
-      .get('/api')
+      .get('/api/v1')
       .expect(200)
       .expect('content-type', /json/)
-      .expect((res) => {
-        res.body.should.have.property('v1');
-        res.body.v1.should.endWith('/api/v1');
-      })
+      .expect(hasCorrectEndpointsList)
       .end(done)
   );
+
+  /* Helper: validate endpoints list. */
+  function hasCorrectEndpointsList(res) {
+    // User methods.
+    res.body.should.have.property('user');
+    res.body.user.should.have.property('register');
+    res.body.user.register.should.endWith('/api/v1/user/register');
+    res.body.user.should.have.property('password');
+    res.body.user.password.should.endWith('/api/v1/user/password');
+  }
 
 });
