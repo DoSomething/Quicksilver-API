@@ -33,7 +33,7 @@
   "scripts": {
     "debug": "sails debug",
     "start": "node app.js",
-    "test": "NODE_ENV=test node ./node_modules/mocha/bin/mocha --compilers coffee:coffee-script test/bootstrap.test.js test/**/*.test.js"
+    "test": "NODE_ENV=test node ./node_modules/mocha/bin/mocha --require coffee-script/register --compilers coffee:coffee-script test/bootstrap.test.js test/**/*.test.js test/**/*.test.coffee"
   },
   "main": "app.js",
   "repository": {
