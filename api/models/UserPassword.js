@@ -46,8 +46,13 @@ module.exports = {
     }
   },
 
-  // Validate the presences of at least one of the fields.
+  /**
+   * Validate the presences of at least one of the fields.
+   */
   beforeValidate(values, cb) {
+    // TODO: Replace this with custom attribute validation method:
+    // https://github.com/balderdashy/waterline-docs/blob/master/models/validations.md#custom-validations
+
     // The list of possible fields.
     const fields = ['user_id', 'email', 'mobile'];
 
