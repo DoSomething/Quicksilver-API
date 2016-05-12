@@ -10,14 +10,13 @@ module.exports = {
   /**
    * `ApiController.index()`
    */
-  index: function (req, res) {
+  index(req, res) {
     return res.json({
       user: {
         register: sails.config.appUrl + sails.getUrlFor('v1/UserController.register'),
-        password: sails.config.appUrl + sails.getUrlFor('v1/UserController.password'),
+        password: sails.config.appUrl + sails.getUrlFor('v1/UserController.password')
       }
     });
-  },
+  }
 
 };
-
