@@ -1,5 +1,5 @@
 {
-  "ext": "js,json,coffee",
+  "ext": "js,json",
   "verbose": false,
   "env": {
     "NODE_ENV": "development"

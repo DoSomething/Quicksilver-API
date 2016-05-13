@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * ApiController
  *
@@ -10,11 +12,10 @@ module.exports = {
   /**
    * `ApiController.index()`
    */
-  index: function (req, res) {
+  index(req, res) {
     return res.json({
-      v1: sails.config.appUrl + sails.getUrlFor('v1/ApiController.index'),
+      v1: sails.config.appUrl + sails.getUrlFor('v1/ApiController.index')
     });
-  },
+  }
 
 };
-
