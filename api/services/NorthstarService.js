@@ -5,7 +5,7 @@ const NorthstarClient = require('@dosomething/northstar-js');
 /**
  * Nortstar client service.
  */
- module.exports = {
+module.exports = {
 
   getClient() {
     if (!this.client) {
@@ -23,7 +23,9 @@ const NorthstarClient = require('@dosomething/northstar-js');
   },
 
   resolveRequestId(model) {
-    let type, id;
+    let id;
+    let type;
+
     if (model.user_id) {
       type = 'id';
       id = model.user_id;
@@ -34,7 +36,8 @@ const NorthstarClient = require('@dosomething/northstar-js');
       type = 'mobile';
       id = model.mobile;
     }
-    return { type: type, id: id };
+
+    return { type, id };
   },
 
-}
+};

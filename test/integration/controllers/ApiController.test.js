@@ -5,21 +5,18 @@
  */
 
 const request = require('supertest');
-const should = require('should');
 
 /**
  * Test root redirect.
  */
 describe('GET /', () => {
-
-  it('should redirect to /api', done =>
+  it('should redirect to /api', (done) => {
     request(sails.hooks.http.app)
       .get('/')
       .expect(302)
       .expect('location', /^\/api$/)
-      .end(done)
-  );
-
+      .end(done);
+  });
 });
 
 
@@ -27,8 +24,7 @@ describe('GET /', () => {
  * Test API "ping" endpoint.
  */
 describe('GET /api', () => {
-
-  it('should respond with JSON list of API versions', done =>
+  it('should respond with JSON list of API versions', (done) => {
     request(sails.hooks.http.app)
       .get('/api')
       .expect(200)
@@ -37,7 +33,6 @@ describe('GET /api', () => {
         res.body.should.have.property('v1');
         res.body.v1.should.endWith('/api/v1');
       })
-      .end(done)
-  );
-
+      .end(done);
+  });
 });
