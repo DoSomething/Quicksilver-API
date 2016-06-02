@@ -25,17 +25,17 @@ describe('POST /user/password', () => {
 
   /* Only user_id field posted. */
   it('should accept test `user_id` and return expected json payload', done =>
-    postValidDataAndCheckResponse(done, {'user_id': '54f9e1c8469c64df6c8b4568'})
+    postValidDataAndCheckResponse(done, {'user_id': '5480c950bffebc651c8b456f'})
   );
 
   /* Only email field posted. */
   it('should accept test `email` and return expected json payload', done =>
-    postValidDataAndCheckResponse(done, {'email': 'info@dosomething.org'})
+    postValidDataAndCheckResponse(done, {'email': 'test@dosomething.org'})
   );
 
   /* Only mobile field posted. */
   it('should accept test `mobile` and return expected json payload', done =>
-    postValidDataAndCheckResponse(done, {'mobile': '15556669999'})
+    postValidDataAndCheckResponse(done, {'mobile': '5555555555'})
   );
 
   /* Helper: POST data to /user/password and validate response. */
@@ -63,7 +63,7 @@ describe('POST /user/password', () => {
     res.body.should.have.property('user_language');
     res.body.should.have.property('email_template');
     res.body.should.have.property('email_tags');
-    res.body.email_tags[0].should.equal('drupal_user_password');
+    res.body.email_tags[0].should.equal('user_password');
     res.body.should.have.property('activity_timestamp');
     res.body.should.have.property('application_id');
   }

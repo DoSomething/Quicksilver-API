@@ -43,7 +43,27 @@ module.exports = {
     },
     email_template: {
       type: 'string'
-    }
+    },
+    toMessage() {
+      return NorthstarService.getUserFor(this).then((user) => {
+        return {
+          activity: 'user_password',
+          email: user.email,
+          uid: user.drupalID,
+          merge_vars: {
+            MEMBER_COUNT: null,
+            FNAME: null,
+            RESET_LINK: null,
+          },
+          user_country: user.country,
+          user_language: user.language,
+          email_template: null,
+          email_tags: ['user_password'],
+          activity_timestamp: null,
+          application_id: null,
+        };
+      });
+    },
   },
 
   /**
