@@ -25,28 +25,28 @@ module.exports = {
       type: 'string',
       required: true,
       hexadecimal: true,
-      defaultsTo: ""
+      defaultsTo: '',
     },
     email: {
       type: 'string',
       required: true,
       email: true,
-      defaultsTo: ""
+      defaultsTo: '',
     },
     mobile: {
       type: 'string',
       required: true,
-      defaultsTo: ""
+      defaultsTo: '',
     },
     application_id: {
-      type: 'string'
+      type: 'string',
     },
     email_template: {
-      type: 'string'
+      type: 'string',
     },
     toMessage() {
       return NorthstarService.getUserFor(this).then((user) => {
-        return {
+        const message = {
           activity: 'user_password',
           email: user.email,
           uid: user.drupalID,
@@ -62,6 +62,7 @@ module.exports = {
           activity_timestamp: null,
           application_id: null,
         };
+        return message;
       });
     },
   },
@@ -95,5 +96,6 @@ module.exports = {
 
     // Continue.
     cb();
-  }
+  },
+
 };
