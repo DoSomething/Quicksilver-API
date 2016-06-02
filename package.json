@@ -45,7 +45,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/sergii/quicksilver-api.git"
+    "url": "git+https://github.com/DoSomething/quicksilver-api.git"
   },
   "author": "sergii",
   "license": "MIT"
