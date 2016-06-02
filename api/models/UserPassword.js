@@ -60,7 +60,7 @@ module.exports = {
           email_template: '',
           email_tags: ['drupal_user_password'],
           activity_timestamp: null,
-          application_id: 'quicksilver-api',
+          application_id: null,
         };
       });
     },
