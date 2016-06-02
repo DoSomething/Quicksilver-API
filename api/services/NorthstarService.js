@@ -1,6 +1,6 @@
 'use strict';
 
-const NorthstarClient = require('northstar-js');
+const NorthstarClient = require('@dosomething/northstar-js');
 
 /**
  * Nortstar client service.
