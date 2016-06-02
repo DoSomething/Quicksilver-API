@@ -57,8 +57,8 @@ module.exports = {
           },
           user_country: user.country,
           user_language: user.language,
-          email_template: '',
-          email_tags: ['drupal_user_password'],
+          email_template: null,
+          email_tags: ['user_password'],
           activity_timestamp: null,
           application_id: null,
         };

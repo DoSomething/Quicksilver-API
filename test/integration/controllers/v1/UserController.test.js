@@ -63,7 +63,7 @@ describe('POST /user/password', () => {
     res.body.should.have.property('user_language');
     res.body.should.have.property('email_template');
     res.body.should.have.property('email_tags');
-    res.body.email_tags[0].should.equal('drupal_user_password');
+    res.body.email_tags[0].should.equal('user_password');
     res.body.should.have.property('activity_timestamp');
     res.body.should.have.property('application_id');
   }
