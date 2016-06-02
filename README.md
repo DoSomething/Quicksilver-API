@@ -19,6 +19,11 @@ API gateway to Quicksilver (Message Broker) functionality.
 | `POST /campaign/reportback` | [Campaign report back](documentation/endpoints/campaign.md#campaign-report-back) | [campaign.report_back.transactional](documentation/messages/campaign.signup.transactional.md) |
 
 ## Tests
+
+Master build status:
+
+[![wercker status](https://app.wercker.com/status/ee29a549f6d3b68e7b3cb101a7c9a943/s/master "wercker status")](https://app.wercker.com/project/bykey/ee29a549f6d3b68e7b3cb101a7c9a943)
+
 Test coverage uses the following utilities:
 - [Mocha](https://www.npmjs.com/package/mocha)
 - [Should](https://www.npmjs.com/package/should)
