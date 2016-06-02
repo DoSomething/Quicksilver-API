@@ -1,0 +1,3 @@
+# Ignore sails-generated files for now.
+api/responses
+api/policies
