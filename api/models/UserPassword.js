@@ -1,7 +1,5 @@
 'use strict';
 
-const NorthstarClient = require('northstar-js');
-
 /**
  * UserPassword
  *
@@ -47,43 +45,24 @@ module.exports = {
       type: 'string'
     },
     toMessage() {
-      const northstar = new NorthstarClient({
-        baseURI: sails.config.northstar.apiBaseURI,
-        apiKey: sails.config.northstar.apiKey,
+      return NorthstarService.getUserFor(this).then((user) => {
+        return {
+          activity: 'user_password',
+          email: user.email,
+          uid: user.drupalID,
+          merge_vars: {
+            MEMBER_COUNT: null,
+            FNAME: null,
+            RESET_LINK: null,
+          },
+          user_country: user.country,
+          user_language: user.language,
+          email_template: '',
+          email_tags: ['drupal_user_password'],
+          activity_timestamp: null,
+          application_id: 'quicksilver-api',
+        };
       });
-      let type, id;
-      if (this.user_id) {
-        type = 'id';
-        id = this.user_id;
-      } else if (this.email) {
-        type = 'email';
-        id = this.email;
-      } else if (this.mobile) {
-        type = 'mobile';
-        id = this.mobile;
-      }
-
-      return northstar.getUser(type, id)
-        .then((user) => {
-          const message = {
-            activity: 'user_password',
-            email: user.email,
-            uid: user.drupalID,
-            merge_vars: {
-              MEMBER_COUNT: null,
-              FNAME: null,
-              RESET_LINK: null,
-            },
-            user_country: user.country,
-            user_language: user.language,
-            email_template: '',
-            email_tags: ['drupal_user_password'],
-            activity_timestamp: null,
-            application_id: 'quicksilver-api',
-          };
-          return message;
-        })
-        .catch(error => error)
     },
   },
 
