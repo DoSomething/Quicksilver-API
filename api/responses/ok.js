@@ -1,3 +1,6 @@
+/* eslint-disable */
+/* This is sails-generated file not compatible with ES6. */
+
 /**
  * 200 (OK) Response
  *
