@@ -28,6 +28,9 @@
     "sails-disk": "~0.10.9"
   },
   "devDependencies": {
+    "@dosomething/eslint-config": "^1.1.1",
+    "eslint": "^2.11.1",
+    "eslint-plugin-react": "^5.1.1",
     "mocha": "^2.4.5",
     "nodemon": "^1.9.2",
     "should": "^8.3.0",
@@ -36,13 +39,14 @@
   "scripts": {
     "debug": "sails debug",
     "start": "node app.js",
-    "test": "NODE_ENV=test node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/**/*.test.js"
+    "test": "NODE_ENV=test node ./node_modules/mocha/bin/mocha test/bootstrap.test.js test/**/*.test.js",
+    "lint": "eslint test/**/*.js api/**/*.js"
   },
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/sergii/quicksilver-api.git"
+    "url": "git+https://github.com/DoSomething/quicksilver-api.git"
   },
   "author": "sergii",
-  "license": ""
+  "license": "MIT"
 }
