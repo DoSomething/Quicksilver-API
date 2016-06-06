@@ -1,5 +1,7 @@
 'use strict';
 
+const Promise = require('bluebird');
+
 /**
  * UserPassword
  *
@@ -45,26 +47,29 @@ module.exports = {
       type: 'string',
     },
     toMessage() {
-      return NorthstarService.getUserFor(this).then((user) => {
-        const message = {
-          activity: 'user_password',
-          email: user.email,
-          uid: user.drupalID,
-          merge_vars: {
-            MEMBER_COUNT: null,
-            FNAME: null,
-            RESET_LINK: null,
-          },
-          user_country: user.country,
-          user_language: user.language,
-          email_template: null,
-          email_tags: ['user_password'],
-          activity_timestamp: null,
-          application_id: null,
-        };
-        return message;
-      });
-      // PhoenixService.User.getCount();
+      return Promise.join(
+        NorthstarService.getUserFor(this),
+        PhoenixService.User.getCount(),
+        (user, count) => {
+          const message = {
+            activity: 'user_password',
+            email: user.email,
+            uid: user.drupalID,
+            merge_vars: {
+              MEMBER_COUNT: count.readable,
+              FNAME: user.firstName,
+              RESET_LINK: null,
+            },
+            user_country: user.country,
+            user_language: user.language,
+            email_template: null,
+            email_tags: ['user_password'],
+            activity_timestamp: null,
+            application_id: null,
+          };
+          return message;
+        }
+      );
     },
   },
 
