@@ -1,4 +1,6 @@
 ---
   globals:
-    # Services:
+    # Sails services are globally-accessible by name.
+    # See http://sailsjs.org/documentation/concepts/services
     NorthstarService: false
+    PhoenixService: false
