@@ -42,6 +42,7 @@ module.exports = {
     },
     application_id: {
       type: 'string',
+      defaultsTo: '',
     },
     email_template: {
       type: 'string',
@@ -51,8 +52,17 @@ module.exports = {
         NorthstarService.getUserFor(this),
         PhoenixService.User.getCount(),
         (user, count) => {
+          // TODO: build using model?
+          const activity = MessageBuilderService.getActivity(UserPassword);
+          const emailTemplate = MessageBuilderService.getEmailTemplate(
+            this.email_template, activity, user.country
+          );
+          const emailTags = MessageBuilderService.getEmailTags(
+            activity, this.application_id
+          );
+
           const message = {
-            activity: 'user_password',
+            activity,
             email: user.email,
             uid: user.drupalID,
             merge_vars: {
@@ -62,10 +72,10 @@ module.exports = {
             },
             user_country: user.country,
             user_language: user.language,
-            email_template: null,
-            email_tags: ['user_password'],
-            activity_timestamp: null,
-            application_id: null,
+            email_template: emailTemplate,
+            email_tags: emailTags,
+            activity_timestamp: MessageBuilderService.getActivityTimestamp(),
+            application_id: this.application_id,
           };
           return message;
         }
