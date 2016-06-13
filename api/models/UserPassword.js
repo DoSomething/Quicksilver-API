@@ -26,25 +26,19 @@ module.exports = {
   attributes: {
     user_id: {
       type: 'string',
-      required: function() {
-        return !this.email && !this.mobile;
-      },
+      required: () => !this.email && !this.mobile,
       hexadecimal: true,
       defaultsTo: '',
     },
     email: {
       type: 'string',
-      required: function() {
-        return !this.user_id && !this.mobile;
-      },
+      required: () => !this.user_id && !this.mobile,
       email: true,
       defaultsTo: '',
     },
     mobile: {
       type: 'string',
-      required: function() {
-        return !this.user_id && !this.email;
-      },
+      required: () => !this.user_id && !this.email,
       defaultsTo: '',
     },
     application_id: {
