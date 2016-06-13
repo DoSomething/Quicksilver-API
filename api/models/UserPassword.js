@@ -2,6 +2,17 @@
 
 const Promise = require('bluebird');
 
+/*
+ * Validate that at least one of the user fields have a value
+ *
+ * @param string userField
+ *   The name of the field
+ */
+function isOneOfFieldSet() {
+  // TODO: Move to module
+  return ['user_id', 'email', 'mobile'].every(userField => !this[userField]);
+}
+
 /**
  * UserPassword
  *
@@ -26,19 +37,19 @@ module.exports = {
   attributes: {
     user_id: {
       type: 'string',
-      required: () => !this.email && !this.mobile,
+      required: isOneOfFieldSet,
       hexadecimal: true,
       defaultsTo: '',
     },
     email: {
       type: 'string',
-      required: () => !this.user_id && !this.mobile,
+      required: isOneOfFieldSet,
       email: true,
       defaultsTo: '',
     },
     mobile: {
       type: 'string',
-      required: () => !this.user_id && !this.email,
+      required: isOneOfFieldSet,
       defaultsTo: '',
     },
     application_id: {
@@ -73,10 +84,5 @@ module.exports = {
       );
     },
   },
-
-  /**
-   * Validate the presences of at least one of the fields.
-   */
-
 
 };
