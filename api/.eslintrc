@@ -4,3 +4,6 @@
     # See http://sailsjs.org/documentation/concepts/services
     NorthstarService: false
     PhoenixService: false
+    # Models are exposed as global variables using their globalId.
+    # See http://sailsjs.org/documentation/concepts/globals#/models-and-services
+    UserPassword: false
