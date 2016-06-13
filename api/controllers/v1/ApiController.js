@@ -16,9 +16,9 @@ module.exports = {
     return res.json({
       user: {
         register: sails.config.appUrl + sails.getUrlFor('v1/UserController.register'),
-        password: sails.config.appUrl + sails.getUrlFor('v1/UserController.password')
-      }
+        password: sails.config.appUrl + sails.getUrlFor('v1/UserController.password'),
+      },
     });
-  }
+  },
 
 };

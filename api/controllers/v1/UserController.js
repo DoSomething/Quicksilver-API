@@ -15,7 +15,7 @@ module.exports = {
   index(req, res) {
     return res.json({
       register: sails.config.appUrl + sails.getUrlFor('v1/UserController.register'),
-      password: sails.config.appUrl + sails.getUrlFor('v1/UserController.password')
+      password: sails.config.appUrl + sails.getUrlFor('v1/UserController.password'),
     });
   },
 
@@ -25,7 +25,7 @@ module.exports = {
    */
   register(req, res) {
     return res.json({
-      todo: 'register() is not implemented yet!'
+      todo: 'register() is not implemented yet!',
     });
   },
 
@@ -38,5 +38,5 @@ module.exports = {
     .then(result => result.toMessage())
     .then(message => res.send(message))
     .caught(error => res.negotiate(error));
-  }
+  },
 };
