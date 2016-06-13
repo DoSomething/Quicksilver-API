@@ -42,7 +42,7 @@
     "debug": "sails debug",
     "start": "node app.js",
     "test": "npm run lint && NODE_ENV=test mocha test/bootstrap.test.js test/**/*.test.js",
-    "lint": "eslint test/**/*.js api/**/*.js"
+    "lint": "eslint --ext=.js test/ api/"
   },
   "main": "app.js",
   "repository": {
