@@ -26,19 +26,19 @@ module.exports = {
   attributes: {
     user_id: {
       type: 'string',
-      required: NorthstarService.isOneOfFieldSet(this),
+      required: HelpersService.isOneOfFieldSet(this),
       hexadecimal: true,
       defaultsTo: '',
     },
     email: {
       type: 'string',
-      required: NorthstarService.isOneOfFieldSet(this),
+      required: HelpersService.isOneOfFieldSet(this),
       email: true,
       defaultsTo: '',
     },
     mobile: {
       type: 'string',
-      required: NorthstarService.isOneOfFieldSet(this),
+      required: HelpersService.isOneOfFieldSet(this),
       defaultsTo: '',
     },
     application_id: {
