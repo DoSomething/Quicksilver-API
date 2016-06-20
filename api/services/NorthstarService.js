@@ -42,6 +42,6 @@ module.exports = {
 
   isOneOfFieldSet(submission) {
     return ['user_id', 'email', 'mobile'].every(userField => !submission[userField]);
-  }
+  },
 
 };
