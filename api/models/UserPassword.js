@@ -2,17 +2,6 @@
 
 const Promise = require('bluebird');
 
-/*
- * Validate that at least one of the user fields have a value
- *
- * @param string userField
- *   The name of the field
- */
-function isOneOfFieldSet() {
-  // TODO: Move to module
-  return ['user_id', 'email', 'mobile'].every(userField => !this[userField]);
-}
-
 /**
  * UserPassword
  *
