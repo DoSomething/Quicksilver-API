@@ -26,19 +26,19 @@ module.exports = {
   attributes: {
     user_id: {
       type: 'string',
-      required: HelpersService.isOneOfFieldSet(this),
+      required: HelpersService.isOneOfFieldSet,
       hexadecimal: true,
       defaultsTo: '',
     },
     email: {
       type: 'string',
-      required: HelpersService.isOneOfFieldSet(this),
+      required: HelpersService.isOneOfFieldSet,
       email: true,
       defaultsTo: '',
     },
     mobile: {
       type: 'string',
-      required: HelpersService.isOneOfFieldSet(this),
+      required: HelpersService.isOneOfFieldSet,
       defaultsTo: '',
     },
     application_id: {
