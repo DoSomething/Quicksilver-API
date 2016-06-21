@@ -6,8 +6,8 @@
 module.exports = {
 
   /**
-   * validateModelIsOneOfIdParams - test model values for at least one of user_id, email or mobile.
-   * Typically this is a requirement by Northstar user lookups.
+   * Test model values for at least one of user_id, email or mobile. Typically this is a
+   * requirement by Northstar user lookups.
    *
    * @returns {boolean}
    */
