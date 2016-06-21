@@ -26,19 +26,19 @@ module.exports = {
   attributes: {
     user_id: {
       type: 'string',
-      required: HelpersService.isOneOfFieldSet,
+      required: HelpersService.validateModelIsOneOfIdParams,
       hexadecimal: true,
       defaultsTo: '',
     },
     email: {
       type: 'string',
-      required: HelpersService.isOneOfFieldSet,
+      required: HelpersService.validateModelIsOneOfIdParams,
       email: true,
       defaultsTo: '',
     },
     mobile: {
       type: 'string',
-      required: HelpersService.isOneOfFieldSet,
+      required: HelpersService.validateModelIsOneOfIdParams,
       defaultsTo: '',
     },
     application_id: {
