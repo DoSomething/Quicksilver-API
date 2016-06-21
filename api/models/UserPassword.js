@@ -2,17 +2,6 @@
 
 const Promise = require('bluebird');
 
-/*
- * Validate that at least one of the user fields have a value
- *
- * @param string userField
- *   The name of the field
- */
-function isOneOfFieldSet() {
-  // TODO: Move to module
-  return ['user_id', 'email', 'mobile'].every(userField => !this[userField]);
-}
-
 /**
  * UserPassword
  *
@@ -37,19 +26,19 @@ module.exports = {
   attributes: {
     user_id: {
       type: 'string',
-      required: isOneOfFieldSet,
+      required: HelpersService.validateModelIsOneOfIdParams,
       hexadecimal: true,
       defaultsTo: '',
     },
     email: {
       type: 'string',
-      required: isOneOfFieldSet,
+      required: HelpersService.validateModelIsOneOfIdParams,
       email: true,
       defaultsTo: '',
     },
     mobile: {
       type: 'string',
-      required: isOneOfFieldSet,
+      required: HelpersService.validateModelIsOneOfIdParams,
       defaultsTo: '',
     },
     application_id: {
