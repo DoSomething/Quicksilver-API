@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@dosomething/northstar-js": "0.1.0-0",
-    "@dosomething/phoenix-js": "0.0.1-0",
+    "@dosomething/phoenix-js": "0.1.0-0",
     "bluebird": "^3.4.0",
     "change-case": "^3.0.0",
     "ejs": "2.3.4",

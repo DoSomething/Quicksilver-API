@@ -48,7 +48,7 @@ module.exports = {
       type: 'string',
     },
     toMessage() {
-      return Promise.join(
+      const payloadPartial = Promise.join(
         NorthstarService.getUserFor(this),
         PhoenixService.User.getCount(),
         (user, count) => {
@@ -80,6 +80,17 @@ module.exports = {
           return message;
         }
       );
+
+      const payload = Promise.join(
+        payloadPartial,
+        PhoenixService.User.getPasswordResetURL(),
+        (data, url) => {
+          const message = data;
+          message.merge_vars.RESET_LINK = url;
+          return message;
+        }
+      );
+      return payload;
     },
   },
 
