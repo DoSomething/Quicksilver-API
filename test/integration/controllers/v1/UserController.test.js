@@ -53,7 +53,7 @@ describe('POST /user/password', () => {
     data.merge_vars
       .should.have.property('RESET_LINK')
       .which.is.not.empty()
-      .and.is.a.match(/\/user\/reset\/\d+\/\d+\/[a-zA-Z0-9-\_]+$/);
+      .and.is.a.match(/\/user\/reset\/\d+\/\d+\/[a-zA-Z0-9-\_]+\/login$/);
   }
 
   /**

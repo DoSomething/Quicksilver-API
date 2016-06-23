@@ -48,7 +48,7 @@ module.exports = {
       type: 'string',
     },
     toMessage() {
-      const payloadPartial = Promise.join(
+      const payload = Promise.join(
         NorthstarService.getUserFor(this),
         PhoenixService.User.getCount(),
         (user, count) => {
@@ -61,33 +61,26 @@ module.exports = {
             activity, this.application_id
           );
 
-          const message = {
-            activity,
-            email: user.email,
-            uid: user.drupalID,
-            merge_vars: {
-              MEMBER_COUNT: count.readable,
-              FNAME: user.firstName,
-              RESET_LINK: null,
-            },
-            user_country: user.country,
-            user_language: user.language,
-            email_template: emailTemplate,
-            email_tags: emailTags,
-            activity_timestamp: MessageBuilderService.getActivityTimestamp(),
-            application_id: this.application_id,
-          };
-          return message;
-        }
-      );
-
-      const payload = Promise.join(
-        payloadPartial,
-        PhoenixService.User.getPasswordResetURL(),
-        (data, url) => {
-          const message = data;
-          message.merge_vars.RESET_LINK = url;
-          return message;
+          return PhoenixService.User.getPasswordResetURL(user.drupalID)
+            .then((resetPasswordUrl) => {
+              const message = {
+                activity,
+                email: user.email,
+                uid: user.drupalID,
+                merge_vars: {
+                  MEMBER_COUNT: count.readable,
+                  FNAME: user.firstName,
+                  RESET_LINK: resetPasswordUrl,
+                },
+                user_country: user.country,
+                user_language: user.language,
+                email_template: emailTemplate,
+                email_tags: emailTags,
+                activity_timestamp: MessageBuilderService.getActivityTimestamp(),
+                application_id: this.application_id,
+              };
+              return message;
+            });
         }
       );
       return payload;

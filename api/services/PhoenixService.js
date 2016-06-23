@@ -7,6 +7,8 @@ const PhoenixClient = require('@dosomething/phoenix-js');
  */
 module.exports = (function () {
   return new PhoenixClient({
-    baseURI: sails.config.phoenix.apiBaseURI,
+    baseURI: sails.config.phoenix.baseURI,
+    username: sails.config.phoenix.username,
+    password: sails.config.phoenix.password,
   });
 }());
