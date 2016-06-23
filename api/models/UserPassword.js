@@ -26,20 +26,23 @@ module.exports = {
   attributes: {
     user_id: {
       type: 'string',
-      required: HelpersService.validateModelIsOneOfIdParams,
       hexadecimal: true,
-      defaultsTo: '',
+      required() {
+        return HelpersService.validateModelIsOneOfIdParams(this);
+      },
     },
     email: {
       type: 'string',
-      required: HelpersService.validateModelIsOneOfIdParams,
       email: true,
-      defaultsTo: '',
+      required() {
+        return HelpersService.validateModelIsOneOfIdParams(this);
+      },
     },
     mobile: {
       type: 'string',
-      required: HelpersService.validateModelIsOneOfIdParams,
-      defaultsTo: '',
+      required() {
+        return HelpersService.validateModelIsOneOfIdParams(this);
+      },
     },
     application_id: {
       type: 'string',
