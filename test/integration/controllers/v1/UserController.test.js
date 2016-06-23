@@ -16,15 +16,20 @@ describe('POST /user/password', () => {
   function hasCorrect200Response(res) {
     const data = res.body;
 
+    const emailTags = [
+      'user_password',
+      'quicksilver_api',
+    ];
+
     // User properties.
     data.should.have.property('activity', 'user_password');
     data.should.have.property('email', 'test@dosomething.org');
     data.should.have.property('uid', '187');
     data.should.have.property('user_country', 'US');
-    data.should.have.property('user_language', 'en');
+    data.should.have.property('user_language', 'en-global');
     data.should.have.property('email_template', 'mb-user-password-US');
-    data.should.have.property('email_tags', ['drupal_user_password']);
-    data.should.have.property('application_id', 'US');
+    data.should.have.property('email_tags', emailTags);
+    data.should.have.property('application_id', 'QuicksilverAPI');
 
     // TODO: add custom assertions.
     // Timestamp.
@@ -34,11 +39,12 @@ describe('POST /user/password', () => {
     data.should.have.property('merge_vars').which.is.an.Object();
 
     // First name.
-    data.merge_vars.should.have.property('FNAME', 'Test');
+    data.merge_vars.should.have.property('FNAME', 'test');
 
     // Member count should be `[float number] [million]` word.
     data.merge_vars
       .should.have.property('MEMBER_COUNT')
+      .which.is.not.empty()
       .which.is.a.match(/^\d+(\.\d)? million/);
 
     // Reset link should [/user/reset/][drupal_id]/[timestamp]/[reduced base64].
@@ -46,7 +52,8 @@ describe('POST /user/password', () => {
     // https://api.drupal.org/api/drupal/includes%21bootstrap.inc/function/drupal_hmac_base64/7.x
     data.merge_vars
       .should.have.property('RESET_LINK')
-      .which.is.a.match(/\/user\/reset\/\d+\/\d+\/[a-zA-Z0-9-\_]+$/);
+      .which.is.not.empty()
+      .and.is.a.match(/\/user\/reset\/\d+\/\d+\/[a-zA-Z0-9-\_]+\/login$/);
   }
 
   /**
@@ -67,9 +74,12 @@ describe('POST /user/password', () => {
    * Helper: POST data to /user/password and validate response.
    */
   function postValidDataAndCheckResponse(done, data) {
+    // Post optional application_id field to check if it ends up in
+    // the correct places eventually.
+    const postData = Object.assign(data, { application_id: 'QuicksilverAPI' });
     request(sails.hooks.http.app)
       .post('/api/v1/user/password')
-      .send(data)
+      .send(postData)
       .expect(200)
       .expect('content-type', /json/)
       .expect(hasCorrect200Response)
@@ -88,17 +98,17 @@ describe('POST /user/password', () => {
   });
 
   /* Only user_id field posted. */
-  it.skip('should accept test `user_id` and return expected json payload', (done) => {
+  it('should accept test `user_id` and return expected json payload', (done) => {
     postValidDataAndCheckResponse(done, { user_id: '5480c950bffebc651c8b456f' });
   });
 
   /* Only email field posted. */
-  it.skip('should accept test `email` and return expected json payload', (done) => {
+  it('should accept test `email` and return expected json payload', (done) => {
     postValidDataAndCheckResponse(done, { email: 'test@dosomething.org' });
   });
 
   /* Only mobile field posted. */
-  it.skip('should accept test `mobile` and return expected json payload', (done) => {
+  it('should accept test `mobile` and return expected json payload', (done) => {
     postValidDataAndCheckResponse(done, { mobile: '5555555555' });
   });
 });

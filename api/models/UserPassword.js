@@ -26,51 +26,68 @@ module.exports = {
   attributes: {
     user_id: {
       type: 'string',
-      required: HelpersService.validateModelIsOneOfIdParams,
       hexadecimal: true,
-      defaultsTo: '',
+      required() {
+        return HelpersService.validateModelIsOneOfIdParams(this);
+      },
     },
     email: {
       type: 'string',
-      required: HelpersService.validateModelIsOneOfIdParams,
       email: true,
-      defaultsTo: '',
+      required() {
+        return HelpersService.validateModelIsOneOfIdParams(this);
+      },
     },
     mobile: {
       type: 'string',
-      required: HelpersService.validateModelIsOneOfIdParams,
-      defaultsTo: '',
+      required() {
+        return HelpersService.validateModelIsOneOfIdParams(this);
+      },
     },
     application_id: {
       type: 'string',
+      defaultsTo: '',
     },
     email_template: {
       type: 'string',
     },
     toMessage() {
-      return Promise.join(
+      const payload = Promise.join(
         NorthstarService.getUserFor(this),
         PhoenixService.User.getCount(),
         (user, count) => {
-          const message = {
-            activity: 'user_password',
-            email: user.email,
-            uid: user.drupalID,
-            merge_vars: {
-              MEMBER_COUNT: count.readable,
-              FNAME: user.firstName,
-              RESET_LINK: null,
-            },
-            user_country: user.country,
-            user_language: user.language,
-            email_template: null,
-            email_tags: ['user_password'],
-            activity_timestamp: null,
-            application_id: null,
-          };
-          return message;
+          // TODO: build using model?
+          const activity = MessageBuilderService.getActivity(UserPassword);
+          const emailTemplate = MessageBuilderService.getEmailTemplate(
+            this.email_template, activity, user.country
+          );
+          const emailTags = MessageBuilderService.getEmailTags(
+            activity, this.application_id
+          );
+
+          return PhoenixService.User.getPasswordResetURL(user.drupalID)
+            .then((resetPasswordUrl) => {
+              const message = {
+                activity,
+                email: user.email,
+                uid: user.drupalID,
+                merge_vars: {
+                  MEMBER_COUNT: count.readable,
+                  FNAME: user.firstName,
+                  RESET_LINK: resetPasswordUrl,
+                },
+                user_country: user.country,
+                user_language: user.language,
+                email_template: emailTemplate,
+                email_tags: emailTags,
+                activity_timestamp: MessageBuilderService.getActivityTimestamp(),
+                application_id: this.application_id,
+              };
+              return message;
+            });
         }
       );
+      return payload;
     },
   },
 

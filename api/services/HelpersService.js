@@ -11,8 +11,8 @@ module.exports = {
    *
    * @returns {boolean}
    */
-  validateModelIsOneOfIdParams() {
-    return ['user_id', 'email', 'mobile'].every(userField => !this[userField]);
+  validateModelIsOneOfIdParams(model) {
+    return ['user_id', 'email', 'mobile'].every(userField => !model[userField]);
   },
 
 };
