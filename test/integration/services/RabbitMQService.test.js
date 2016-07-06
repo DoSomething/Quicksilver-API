@@ -65,4 +65,36 @@ describe.skip('RabbitMQ', () => {
       done();
     });
   });
+
+  /**
+   * Test transactionalExchange presence.
+   * TODO: run rabbit.setup();
+   */
+  it('transactionalExchange should be available on default vhost', (done) => {
+    const client = getManagementClient();
+    const vhostName = sails.config.amqp.vhost;
+    const exchangeName = 'transactionalExchange';
+    client.getExchange(vhostName, exchangeName, (err, res, data) => {
+      if (err) { throw err; }
+      // TODO: test properties.
+      if (!data) { throw new Error('No data'); }
+      done();
+    });
+  });
+
+  /**
+   * Test transactionalQueue presence.
+   * TODO: run rabbit.setup();
+   */
+  it('transactionalQueue should be available on default vhost', (done) => {
+    const client = getManagementClient();
+    const vhostName = sails.config.amqp.vhost;
+    const queueName = 'transactionalQueue';
+    client.getQueue(vhostName, queueName, (err, res, data) => {
+      if (err) { throw err; }
+      // TODO: test properties.
+      if (!data) { throw new Error('No data'); }
+      done();
+    });
+  });
 });
