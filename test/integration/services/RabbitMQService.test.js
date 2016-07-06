@@ -52,4 +52,17 @@ describe('RabbitMQ', () => {
       done();
     });
   });
+
+  /**
+   * Declares a test queue, then publishes and consumes a message.
+   */
+  it('should pass the aliveness test', (done) => {
+    const client = getManagementClient();
+    const vhostName = sails.config.amqp.vhost;
+    client.alive(vhostName, (err, res, data) => {
+      if (err) { throw err; }
+      data.should.have.property('status').which.is.equal('ok');
+      done();
+    });
+  });
 });
