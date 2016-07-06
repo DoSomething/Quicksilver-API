@@ -5,8 +5,6 @@
 const sails = require('sails');
 
 before(function (done) {
-  // Increase the Mocha timeout so that Sails has enough time to lift.
-  this.timeout(50000);
   sails.lift({}, (err) => {
     if (err) {
       return done(err);
