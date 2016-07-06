@@ -24,7 +24,7 @@ describe('RabbitMQ', () => {
   before(() => {
     // Sails should be configured.
     sails.config.should.have.property('amqp');
-    const config = ['username', 'password', 'hostname', 'protocol'];
+    const config = ['username', 'password', 'hostname', 'protocol', 'vhost'];
     sails.config.amqp.should.have.properties(config);
   });
 
@@ -36,6 +36,19 @@ describe('RabbitMQ', () => {
     client.overview((err, res, data) => {
       if (err) { throw err; }
       data.should.have.property('management_version');
+      done();
+    });
+  });
+
+  /**
+   * Vhost should exist.
+   */
+  it('default vhost should exist', (done) => {
+    const client = getManagementClient();
+    const vhostName = sails.config.amqp.vhost;
+    client.getVHost(vhostName, (err, res, data) => {
+      if (err) { throw err; }
+      data.should.have.property('name').which.is.equal(vhostName);
       done();
     });
   });
