@@ -5,7 +5,7 @@ const AMQPStats = require('amqp-stats');
 /**
  * RabbitMQ connection.
  */
-describe('RabbitMQ', () => {
+describe.skip('RabbitMQ', () => {
   /**
    * Helper: get default client.
    */
