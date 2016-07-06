@@ -98,17 +98,20 @@ describe('POST /user/password', () => {
   });
 
   /* Only user_id field posted. */
-  it('should accept test `user_id` and return expected json payload', (done) => {
+  it('should prepare the payload for `user_id`', function (done) {
+    this.timeout(5000);
     postValidDataAndCheckResponse(done, { user_id: '5480c950bffebc651c8b456f' });
   });
 
   /* Only email field posted. */
-  it('should accept test `email` and return expected json payload', (done) => {
+  it('should prepare the payload for `email`', function (done) {
+    this.timeout(5000);
     postValidDataAndCheckResponse(done, { email: 'test@dosomething.org' });
   });
 
   /* Only mobile field posted. */
-  it('should accept test `mobile` and return expected json payload', (done) => {
+  it('should prepare the payload for `mobile`', function (done) {
+    this.timeout(5000);
     postValidDataAndCheckResponse(done, { mobile: '5555555555' });
   });
 });
