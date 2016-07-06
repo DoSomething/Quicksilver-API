@@ -40,29 +40,32 @@ describe.skip('RabbitMQ', () => {
     });
   });
 
-  /**
-   * Vhost should exist.
-   */
-  it('default vhost should exist', (done) => {
-    const client = getManagementClient();
-    const vhostName = sails.config.amqp.vhost;
-    client.getVHost(vhostName, (err, res, data) => {
-      if (err) { throw err; }
-      data.should.have.property('name').which.is.equal(vhostName);
-      done();
+  // Default vhost.
+  describe('default vhost', () => {
+    /**
+     * Vhost should exist.
+     */
+    it('should exist', (done) => {
+      const client = getManagementClient();
+      const vhostName = sails.config.amqp.vhost;
+      client.getVHost(vhostName, (err, res, data) => {
+        if (err) { throw err; }
+        data.should.have.property('name').which.is.equal(vhostName);
+        done();
+      });
     });
-  });
 
-  /**
-   * Declares a test queue, then publishes and consumes a message.
-   */
-  it('should pass the aliveness test', (done) => {
-    const client = getManagementClient();
-    const vhostName = sails.config.amqp.vhost;
-    client.alive(vhostName, (err, res, data) => {
-      if (err) { throw err; }
-      data.should.have.property('status').which.is.equal('ok');
-      done();
+    /**
+     * Declares a test queue, then publishes and consumes a message.
+     */
+    it('should pass the aliveness test', (done) => {
+      const client = getManagementClient();
+      const vhostName = sails.config.amqp.vhost;
+      client.alive(vhostName, (err, res, data) => {
+        if (err) { throw err; }
+        data.should.have.property('status').which.is.equal('ok');
+        done();
+      });
     });
   });
 
