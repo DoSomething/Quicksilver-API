@@ -20,7 +20,7 @@ module.exports = {
   // Turn off auto fields.
   autoCreatedAt: false,
   autoUpdatedAt: false,
-  autoPK: false,
+  autoPK: true,
 
   // Validation rules.
   attributes: {
@@ -50,6 +50,9 @@ module.exports = {
     },
     email_template: {
       type: 'string',
+    },
+    message: {
+      model: 'UserPasswordResetTransactionalMessage',
     },
     toMessage() {
       const payload = Promise.join(

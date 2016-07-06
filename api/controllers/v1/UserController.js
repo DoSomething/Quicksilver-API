@@ -35,7 +35,12 @@ module.exports = {
    */
   password(req, res) {
     return UserPassword.create(req.params.all())
-    .then(result => result.toMessage())
+    .then((userPassword) => {
+      console.dir(userPassword.message.data, { colors: true, showHidden: true });
+      return {};
+      // return userPassword.message;
+      // return UserPasswordResetTransactionalMessage.create({data: userPassword});
+    })
     .then(message => res.send(message))
     .caught(error => res.negotiate(error));
   },
