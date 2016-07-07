@@ -36,7 +36,10 @@ module.exports = {
   password(req, res) {
     return UserPassword.create(req.params.all())
     .then(result => result.toMessage())
-    .then(message => res.send(message))
+    .then((message) => {
+      RabbitMQService.publishUserPasswordResetTransactional(message);
+      res.send(message);
+    })
     .caught(error => res.negotiate(error));
   },
 };
