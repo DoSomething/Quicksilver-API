@@ -3,18 +3,18 @@
  */
 module.exports.amqp = {
   management: {
-    username: process.env.RABBITMQ_USERNAME,
-    password: process.env.RABBITMQ_PASSWORD,
-    hostname: process.env.RABBITMQ_MANAGEMENT_HOST,
-    protocol: process.env.RABBITMQ_SSL ? 'https' : 'http',
-    vhost: process.env.RABBITMQ_VHOST,
+    username: process.env.QS_RABBITMQ_USERNAME,
+    password: process.env.QS_RABBITMQ_PASSWORD,
+    hostname: process.env.QS_RABBITMQ_MANAGEMENT_HOST,
+    protocol: process.env.QS_RABBITMQ_SSL === 'true' ? 'https' : 'http',
+    vhost: process.env.QS_RABBITMQ_VHOST,
   },
   connection: {
-    username: process.env.RABBITMQ_USERNAME,
-    password: process.env.RABBITMQ_PASSWORD,
-    ssl: process.env.RABBITMQ_SSL,
-    host: process.env.RABBITMQ_HOST,
-    port: process.env.RABBITMQ_PORT,
-    vhost: process.env.RABBITMQ_VHOST,
+    username: process.env.QS_RABBITMQ_USERNAME,
+    password: process.env.QS_RABBITMQ_PASSWORD,
+    ssl: process.env.QS_RABBITMQ_SSL === 'true',
+    host: process.env.QS_RABBITMQ_HOST,
+    port: process.env.QS_RABBITMQ_PORT,
+    vhost: process.env.QS_RABBITMQ_VHOST,
   }
 };
