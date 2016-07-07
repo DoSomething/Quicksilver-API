@@ -1,20 +1,21 @@
 'use strict';
 
 const AMQPStats = require('amqp-stats');
+const should = require('should');
 
 /**
  * RabbitMQ connection.
  */
-describe.skip('RabbitMQ', () => {
+describe('RabbitMQ', () => {
   /**
    * Helper: get default client.
    */
   function getManagementClient() {
     return new AMQPStats({
-      username: sails.config.amqp.username,
-      password: sails.config.amqp.password,
-      hostname: sails.config.amqp.hostname,
-      protocol: sails.config.amqp.protocol,
+      username: sails.config.amqp.management.username,
+      password: sails.config.amqp.management.password,
+      hostname: sails.config.amqp.management.hostname,
+      protocol: sails.config.amqp.management.protocol,
     });
   }
 
@@ -23,9 +24,10 @@ describe.skip('RabbitMQ', () => {
    */
   before(() => {
     // Sails should be configured.
-    sails.config.should.have.property('amqp');
+    should(sails.config).have.property('amqp');
+    should(sails.config.amqp).have.property('management');
     const config = ['username', 'password', 'hostname', 'protocol', 'vhost'];
-    sails.config.amqp.should.have.properties(config);
+    sails.config.amqp.management.should.have.properties(config);
   });
 
   /**
@@ -47,7 +49,7 @@ describe.skip('RabbitMQ', () => {
      */
     it('should exist', (done) => {
       const client = getManagementClient();
-      const vhostName = sails.config.amqp.vhost;
+      const vhostName = sails.config.amqp.management.vhost;
       client.getVHost(vhostName, (err, res, data) => {
         if (err) { throw err; }
         data.should.have.property('name').which.is.equal(vhostName);
@@ -60,7 +62,7 @@ describe.skip('RabbitMQ', () => {
      */
     it('should pass the aliveness test', (done) => {
       const client = getManagementClient();
-      const vhostName = sails.config.amqp.vhost;
+      const vhostName = sails.config.amqp.management.vhost;
       client.alive(vhostName, (err, res, data) => {
         if (err) { throw err; }
         data.should.have.property('status').which.is.equal('ok');
@@ -75,7 +77,7 @@ describe.skip('RabbitMQ', () => {
    */
   it('transactionalExchange should be available on default vhost', (done) => {
     const client = getManagementClient();
-    const vhostName = sails.config.amqp.vhost;
+    const vhostName = sails.config.amqp.management.vhost;
     const exchangeName = 'transactionalExchange';
     client.getExchange(vhostName, exchangeName, (err, res, data) => {
       if (err) { throw err; }
@@ -91,7 +93,7 @@ describe.skip('RabbitMQ', () => {
    */
   it('transactionalQueue should be available on default vhost', (done) => {
     const client = getManagementClient();
-    const vhostName = sails.config.amqp.vhost;
+    const vhostName = sails.config.amqp.management.vhost;
     const queueName = 'transactionalQueue';
     client.getQueue(vhostName, queueName, (err, res, data) => {
       if (err) { throw err; }
