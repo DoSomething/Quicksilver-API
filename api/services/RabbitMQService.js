@@ -25,7 +25,7 @@ module.exports = {
     const exchangeName = 'transactionalExchange';
     const bindingPattern = '*.*.transactional';
     const routingKey = 'user.password_reset.transactional';
-    const msgBuffer = new Buffer(message.toString());
+    const msgBuffer = new Buffer(JSON.stringify(message), 'utf-8');
 
     this.bindQueueToExchange(queueName, exchangeName, bindingPattern)
       .then((channel) => {
