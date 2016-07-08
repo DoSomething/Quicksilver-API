@@ -10,7 +10,7 @@ module.exports.amqp = {
     vhost: process.env.QS_RABBITMQ_VHOST,
   },
   connection: {
-    username: process.env.QS_RABBITMQ_USERNAME,
+    user: process.env.QS_RABBITMQ_USERNAME,
     password: process.env.QS_RABBITMQ_PASSWORD,
     ssl: process.env.QS_RABBITMQ_SSL === 'true',
     host: process.env.QS_RABBITMQ_HOST,
