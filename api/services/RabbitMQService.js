@@ -27,11 +27,14 @@ module.exports = {
     const routingKey = 'user.password_reset.transactional';
     const msgBuffer = new Buffer(JSON.stringify(message), 'utf-8');
 
-    this.bindQueueToExchange(queueName, exchangeName, bindingPattern)
-      .then((channel) => {
-        channel.publish(exchangeName, routingKey, msgBuffer)
-        .then(result => result);
-      });
+    return new Promise((resolve, reject) => {
+      this.bindQueueToExchange(queueName, exchangeName, bindingPattern)
+        .then((channel) => {
+          channel.publish(exchangeName, routingKey, msgBuffer);
+          resolve(true);
+        })
+        .catch(error => reject(error));
+    });
   },
   bindQueueToExchange(queueName, exchangeName, routingKey) {
     return new Promise((resolve, reject) => {

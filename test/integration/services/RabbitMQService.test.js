@@ -2,13 +2,14 @@
 
 const AMQPStats = require('amqp-stats');
 const should = require('should');
+const Channel = require('amqplib/lib/channel').Channel;
 
 /**
  * RabbitMQ connection.
  */
 describe('RabbitMQ', () => {
   /**
-   * Helper: get default client.
+   * Helper: get Rabbit management client.
    */
   function getManagementClient() {
     return new AMQPStats({
@@ -25,9 +26,18 @@ describe('RabbitMQ', () => {
   before(() => {
     // Sails should be configured.
     should(sails.config).have.property('amqp');
+
+    // Rabbit Management.
     should(sails.config.amqp).have.property('management');
-    const config = ['username', 'password', 'hostname', 'protocol', 'vhost'];
-    sails.config.amqp.management.should.have.properties(config);
+    sails.config.amqp.management.should.have.properties(
+      ['username', 'password', 'hostname', 'protocol', 'vhost']
+    );
+
+    // AMQP connection settings.
+    should(sails.config.amqp).have.property('connection');
+    sails.config.amqp.connection.should.have.properties(
+      ['user', 'password', 'ssl', 'host', 'port', 'vhost']
+    );
   });
 
   /**
@@ -71,35 +81,51 @@ describe('RabbitMQ', () => {
     });
   });
 
-  /**
-   * Test transactionalExchange presence.
-   * TODO: run rabbit.setup();
-   */
-  it('transactionalExchange should be available on default vhost', (done) => {
-    const client = getManagementClient();
-    const vhostName = sails.config.amqp.management.vhost;
-    const exchangeName = 'transactionalExchange';
-    client.getExchange(vhostName, exchangeName, (err, res, data) => {
-      if (err) { throw err; }
-      // TODO: test properties.
-      if (!data) { throw new Error('No data'); }
-      done();
+  describe('AMQP client', () => {
+    it('should be able to connect', () => {
+      const result = RabbitMQService.getChannel()
+        .should.eventually.be.an.instanceof(Channel);
+      return result;
     });
-  });
 
-  /**
-   * Test transactionalQueue presence.
-   * TODO: run rabbit.setup();
-   */
-  it('transactionalQueue should be available on default vhost', (done) => {
-    const client = getManagementClient();
-    const vhostName = sails.config.amqp.management.vhost;
-    const queueName = 'transactionalQueue';
-    client.getQueue(vhostName, queueName, (err, res, data) => {
-      if (err) { throw err; }
-      // TODO: test properties.
-      if (!data) { throw new Error('No data'); }
-      done();
+    it('should be able to publish messages', () => {
+      const msg = {
+        test: true,
+      };
+      const result = RabbitMQService.publishUserPasswordResetTransactional(msg);
+      return result.should.eventually.be.equal(true);
+    });
+
+    /**
+     * Test transactionalExchange presence.
+     * TODO: run rabbit.setup();
+     */
+    it('transactionalExchange should appear on default vhost', (done) => {
+      const client = getManagementClient();
+      const vhostName = sails.config.amqp.management.vhost;
+      const exchangeName = 'transactionalExchange';
+      client.getExchange(vhostName, exchangeName, (err, res, data) => {
+        if (err) { throw err; }
+        // TODO: test properties.
+        if (!data) { throw new Error('No data'); }
+        done();
+      });
+    });
+
+    /**
+     * Test transactionalQueue presence.
+     * TODO: run rabbit.setup();
+     */
+    it('transactionalQueue should appear on default vhost', (done) => {
+      const client = getManagementClient();
+      const vhostName = sails.config.amqp.management.vhost;
+      const queueName = 'transactionalQueue';
+      client.getQueue(vhostName, queueName, (err, res, data) => {
+        if (err) { throw err; }
+        // TODO: test properties.
+        if (!data) { throw new Error('No data'); }
+        done();
+      });
     });
   });
 });
