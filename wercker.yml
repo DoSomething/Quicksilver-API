@@ -1,5 +1,21 @@
 box: node:4.4
+services:
+  - id: rabbitmq:management
+    env:
+      RABBITMQ_DEFAULT_USER: $QS_RABBITMQ_USERNAME
+      RABBITMQ_DEFAULT_PASS: $QS_RABBITMQ_PASSWORD
+      RABBITMQ_DEFAULT_VHOST: $QS_RABBITMQ_VHOST
 build:
   steps:
     - npm-install
+    - script:
+        name: setup node environment
+        code: |
+          export NODE_ENV=test
+    - script:
+        name: setup rabbitmq environment
+        code: |
+          export QS_RABBITMQ_MANAGEMENT_HOST=$RABBITMQ_PORT_15672_TCP_ADDR:$RABBITMQ_PORT_15672_TCP_PORT
+          export QS_RABBITMQ_HOST=$RABBITMQ_PORT_5672_TCP_ADDR
+          export QS_RABBITMQ_PORT=$RABBITMQ_PORT_5672_TCP_PORT
     - npm-test
