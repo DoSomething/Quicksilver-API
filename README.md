@@ -78,7 +78,8 @@ Run `npm run stop-dev-services`.
 #### Available services
 
 - `localhost:5672`: RabbitMQ AMQP
-- [`localhost:15672`](http://localhost:15672): RabbitMQ management
+- [`localhost:15672`](http://localhost:15672): RabbitMQ management.
+  User and password are `dosomething`.
 
 ### Running app in development mode
 
