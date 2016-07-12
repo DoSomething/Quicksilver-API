@@ -47,7 +47,9 @@
     "debug": "sails debug",
     "start": "node app.js",
     "test": "npm run lint && NODE_ENV=test mocha test/bootstrap.test.js test/**/*.test.js",
-    "lint": "eslint --ext=.js test/ api/"
+    "lint": "eslint --ext=.js test/ api/",
+    "start-dev-services": "docker-compose -f docker-compose-development-host-only.yml up -d",
+    "stop-dev-services": "docker-compose -f docker-compose-development-host-only.yml stop"
   },
   "main": "app.js",
   "repository": {

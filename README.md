@@ -1,4 +1,4 @@
-# Quicksilver-API
+# Quicksilver-API [![wercker status](https://app.wercker.com/status/ee29a549f6d3b68e7b3cb101a7c9a943/s/master "wercker status")](https://app.wercker.com/project/bykey/ee29a549f6d3b68e7b3cb101a7c9a943)
 API gateway to Quicksilver (Message Broker) functionality.
 
 ## Endpoints
@@ -66,28 +66,44 @@ API gateway to Quicksilver (Message Broker) functionality.
    };
 ```
 
-#### Running Sails
+#### Dependent services
+**Start**:
 
-Run Sails as usual by executing `sails lift` or `npm start`.
+1. Make sure Docker is running.
+2. Run `npm run start-dev-services`
 
-To automatically restart Sails on any changes to .js and .json files, run
-`nodemon` instead.
+**Stop**:
 
+Run `npm run stop-dev-services`.
 
+**Available services**:
+
+- [`localhost:5672`](http://localhost:5672): RabbitMQ AMQP
+- [`localhost:15672`](http://localhost:15672): RabbitMQ management
+
+#### Running app in development mode
+
+**Important**: Make sure dependent services are up and running.
+
+Watch mode (prefered):
+Run `nodemon` to lift up the application and watch for code changes. Application
+will be reloaded on any changes in `.js` and `.json` files.
+
+Normal mode:
+You can start Sails as usual by running `sails lift` or `npm start`.
 
 ## Tests
 
-Master build status:
-
-[![wercker status](https://app.wercker.com/status/ee29a549f6d3b68e7b3cb101a7c9a943/s/master "wercker status")](https://app.wercker.com/project/bykey/ee29a549f6d3b68e7b3cb101a7c9a943)
-
-Test coverage uses the following utilities:
-- [Mocha](https://www.npmjs.com/package/mocha)
-- [Should](https://www.npmjs.com/package/should)
-- [Supertest](https://www.npmjs.com/package/supertest)
+**Important**: Make sure dependent services are up and running.
 
 To run all of the tests defined in `/test` recursively.
 
 ```
 $ npm test
 ```
+
+Test and code style coverage uses the following utilities:
+- [Mocha](https://www.npmjs.com/package/mocha)
+- [Should](https://www.npmjs.com/package/should)
+- [Supertest](https://www.npmjs.com/package/supertest)
+- [ESLint](http://eslint.org/)
