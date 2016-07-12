@@ -56,6 +56,17 @@
     "type": "git",
     "url": "git+https://github.com/DoSomething/quicksilver-api.git"
   },
-  "author": "sergii",
+  "author": {
+    "name" : "Sergii Tkachenko",
+    "email" : "sergii@dosomething.org",
+    "url" : "https://github.com/sergii-tkachenko"
+  },
+  "contributors": [
+    {
+      "name" : "Darren \"Dee\" Lee",
+      "email" : "dee@dosomething.org",
+      "url" : "https://github.com/deezone"
+    }
+  ],
   "license": "MIT"
 }
