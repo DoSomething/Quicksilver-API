@@ -18,18 +18,18 @@ API gateway to Quicksilver (Message Broker) functionality.
 | `POST /campaign/signup`     | [Campaign signup](documentation/endpoints/campaign.md#campaign-signup)           | [campaign.signup.transactional](documentation/messages/campaign.signup.transactional.md)      |
 | `POST /campaign/reportback` | [Campaign report back](documentation/endpoints/campaign.md#campaign-report-back) | [campaign.report_back.transactional](documentation/messages/campaign.signup.transactional.md) |
 
-## Development.
-#### Requirements
+## Development
+### Requirements
 - [Node.js](https://nodejs.org/en/download/) v4.4
 - [Docker](https://www.docker.com/products/overview) with support
   of Compose file [v2](https://docs.docker.com/compose/compose-file/#/versioning)
-  for running dependent services, for example RabbitMQ.
+  for running dependent services (like RabbitMQ).
 
-#### Installation
+### Installation
 1. Install dependencies `npm install`
-2. Create config/local.js file with following settings:
-   
-```js
+2. Create `config/local.js` file with following settings:
+
+   ```js
    module.exports = {
       // Northstar.
       northstar: {
@@ -44,7 +44,7 @@ API gateway to Quicksilver (Message Broker) functionality.
        password: '{{ phoenix_api_pass }}',
       },
 
-     // RabbitMQ
+     // RabbitMQ.
      amqp: {
        management: {
          username: 'dosomething',
@@ -62,26 +62,25 @@ API gateway to Quicksilver (Message Broker) functionality.
          vhost: 'dosomething',
        },
      },
-
    };
 ```
 
-#### Dependent services
-**Start**:
+### Dependent services
+#### Start
 
-1. Make sure Docker is running.
+1. Make sure Docker is running
 2. Run `npm run start-dev-services`
 
-**Stop**:
+#### Stop
 
 Run `npm run stop-dev-services`.
 
-**Available services**:
+#### Available services
 
-- [`localhost:5672`](http://localhost:5672): RabbitMQ AMQP
+- `localhost:5672`: RabbitMQ AMQP
 - [`localhost:15672`](http://localhost:15672): RabbitMQ management
 
-#### Running app in development mode
+### Running app in development mode
 
 **Important**: Make sure dependent services are up and running.
 
