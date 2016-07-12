@@ -18,6 +18,63 @@ API gateway to Quicksilver (Message Broker) functionality.
 | `POST /campaign/signup`     | [Campaign signup](documentation/endpoints/campaign.md#campaign-signup)           | [campaign.signup.transactional](documentation/messages/campaign.signup.transactional.md)      |
 | `POST /campaign/reportback` | [Campaign report back](documentation/endpoints/campaign.md#campaign-report-back) | [campaign.report_back.transactional](documentation/messages/campaign.signup.transactional.md) |
 
+## Development.
+#### Requirements
+- [Node.js](https://nodejs.org/en/download/) v4.4
+- [Docker](https://www.docker.com/products/overview) with support
+  of Compose file [v2](https://docs.docker.com/compose/compose-file/#/versioning)
+  for running dependent services, for example RabbitMQ.
+
+#### Installation
+1. Install dependencies `npm install`
+2. Create config/local.js file with following settings:
+   
+```js
+   module.exports = {
+      // Northstar.
+      northstar: {
+        apiBaseURI: 'https://northstar-qa.dosomething.org/v1/users',
+        apiKey: '{{ nothstar_access_key }}',
+      },
+
+      // Phoenix.
+      phoenix: {
+       baseURI: 'https://staging.beta.dosomething.org/api/v1',
+       username: '{{ phoenix_api_user }}',
+       password: '{{ phoenix_api_pass }}',
+      },
+
+     // RabbitMQ
+     amqp: {
+       management: {
+         username: 'dosomething',
+         password: 'dosomething',
+         hostname: 'localhost:15672',
+         protocol: 'http',
+         vhost: 'dosomething',
+       },
+       connection: {
+         user: 'dosomething',
+         password: 'dosomething',
+         ssl: false,
+         host: 'localhost',
+         port: 5672,
+         vhost: 'dosomething',
+       },
+     },
+
+   };
+```
+
+#### Running Sails
+
+Run Sails as usual by executing `sails lift` or `npm start`.
+
+To automatically restart Sails on any changes to .js and .json files, run
+`nodemon` instead.
+
+
+
 ## Tests
 
 Master build status:
