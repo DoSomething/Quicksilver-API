@@ -5,6 +5,7 @@
 const sails = require('sails');
 
 before(function (done) {
+  this.timeout(10000);
   sails.lift({}, (err) => {
     if (err) {
       return done(err);

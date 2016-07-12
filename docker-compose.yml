@@ -1,0 +1,17 @@
+---
+version: '2'
+services:
+  web:
+    image: node:4
+    command: npm run watch
+    ports:
+      - 1337:1337 # Web
+    links:
+      - rabbitmq
+  rabbitmq:
+    image: rabbitmq:management
+    ports:
+      - 15672:15672 # Management
+    environment:
+      RABBITMQ_DEFAULT_USER: 'dosomething'
+      RABBITMQ_DEFAULT_VHOST: 'dosomething'
