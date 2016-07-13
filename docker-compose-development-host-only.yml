@@ -1,0 +1,13 @@
+---
+version: '2'
+services:
+  rabbitmq:
+    extends:
+      file: docker-compose-common-services.yml
+      service: rabbitmq
+    ports:
+      - 15672:15672 # Management
+      - 5672:5672 # AMQP
+    environment:
+      # Development password.
+      RABBITMQ_DEFAULT_PASS: 'dosomething'

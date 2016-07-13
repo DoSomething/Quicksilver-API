@@ -47,13 +47,26 @@
     "debug": "sails debug",
     "start": "node app.js",
     "test": "npm run lint && NODE_ENV=test mocha test/bootstrap.test.js test/**/*.test.js",
-    "lint": "eslint --ext=.js test/ api/"
+    "lint": "eslint --ext=.js test/ api/",
+    "start-dev-services": "docker-compose -f docker-compose-development-host-only.yml up -d",
+    "stop-dev-services": "docker-compose -f docker-compose-development-host-only.yml down"
   },
   "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DoSomething/quicksilver-api.git"
   },
-  "author": "sergii",
+  "author": {
+    "name" : "Sergii Tkachenko",
+    "email" : "sergii@dosomething.org",
+    "url" : "https://github.com/sergii-tkachenko"
+  },
+  "contributors": [
+    {
+      "name" : "Darren \"Dee\" Lee",
+      "email" : "dee@dosomething.org",
+      "url" : "https://github.com/deezone"
+    }
+  ],
   "license": "MIT"
 }
