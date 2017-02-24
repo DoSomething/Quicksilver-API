@@ -1,6 +1,6 @@
 # User registration transactional message
 
-User registration event to trigger functionality within the Quicksilver system. Each queue bound to the exchange will have messages distributed to the consumer applicaiton based on the queue binding key.
+User registration event to trigger functionality within the Quicksilver system. Each queue bound to the exchange will have messages distributed to the consumer application based on the queue binding key.
 
 ----
 
