@@ -59,11 +59,10 @@ module.exports = {
           // TODO: build using model?
           const activity = MessageBuilderService.getActivity(UserPassword);
           const emailTemplate = MessageBuilderService.getEmailTemplate(
-            this.email_template, activity, user.country
-          );
-          const emailTags = MessageBuilderService.getEmailTags(
-            activity, this.application_id
-          );
+            this.email_template,
+            activity,
+            user.country);
+          const emailTags = MessageBuilderService.getEmailTags(activity, this.application_id);
 
           return PhoenixService.User.getPasswordResetURL(user.drupalID)
             .then((resetPasswordUrl) => {
@@ -85,8 +84,7 @@ module.exports = {
               };
               return message;
             });
-        }
-      );
+        });
       return payload;
     },
   },

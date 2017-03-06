@@ -1,4 +1,5 @@
 'use strict';
+
 /* eslint prefer-arrow-callback: "off" */
 /* Ignore arrow callbacks, needed for this.timeout().  */
 
