@@ -29,15 +29,24 @@ describe('RabbitMQ', () => {
 
     // Rabbit Management.
     should(sails.config.amqp).have.property('management');
-    sails.config.amqp.management.should.have.properties(
-      ['username', 'password', 'hostname', 'protocol', 'vhost']
-    );
+    sails.config.amqp.management.should.have.properties([
+      'username',
+      'password',
+      'hostname',
+      'protocol',
+      'vhost',
+    ]);
 
     // AMQP connection settings.
     should(sails.config.amqp).have.property('connection');
-    sails.config.amqp.connection.should.have.properties(
-      ['user', 'password', 'ssl', 'host', 'port', 'vhost']
-    );
+    sails.config.amqp.connection.should.have.properties([
+      'user',
+      'password',
+      'ssl',
+      'host',
+      'port',
+      'vhost',
+    ]);
   });
 
   /**
